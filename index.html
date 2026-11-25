@@ -67,8 +67,19 @@ summary{padding:10px 0}
 #setup .actions{display:grid;gap:5px;text-align:center}
 #start{width:100%;min-height:52px;font-size:18px;font-weight:750}
 @media(max-width:650px){#setup{padding-bottom:calc(105px + env(safe-area-inset-bottom))}}
+
+.script-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:12px 0 16px;border-bottom:1px solid var(--line)}
+.script-tabs [role=tab]{background:transparent;color:var(--muted);border:0;border-bottom:3px solid transparent;border-radius:0;margin-bottom:-1px}
+.script-tabs [role=tab][aria-selected=true]{background:transparent;color:var(--ink);border-bottom-color:var(--accent);font-weight:750}
+.script-intro{display:flex;align-items:center;gap:12px;margin:0 0 14px}
+#script-icon{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:8px;background:#a53d2d;color:#fff;font:600 27px var(--kana-font)}
+#script-title{font-size:clamp(29px,5vw,40px);margin:0}
+.script-intro p{margin:2px 0 0;color:var(--muted);font-size:14px}
+#category-tabs{max-width:450px;gap:6px}
+#category-tabs button{border-radius:999px}
+#category-tabs [aria-selected=true]{box-shadow:none;font-weight:750}
 </style></head><body><header><span><span class="seal" lang="ja">日々</span>hibi.</span><button id="theme"></button></header>
-<main><section id="setup"><h1>Choose your kana</h1><div role="tablist" aria-label="Script"><button role="tab" id="Hiragana" aria-controls="panel">Hiragana</button><button role="tab" id="Katakana" aria-controls="panel">Katakana</button></div><label class="font-picker">Kana font <select id="kana-font"><option value="gothic">Screen · Gothic</option><option value="textbook">Textbook · Kyōkasho</option><option value="mincho">Print · Minchō</option></select></label><div id="panel" role="tabpanel"><div id="category-tabs" role="tablist" aria-label="Kana category"></div><div id="category-panel" role="tabpanel"></div></div><div class="bar actions"><span id="count"></span><button class="primary" id="start">Practice →</button></div></section>
+<main><section id="setup"><div role="tablist" aria-label="Script" class="script-tabs"><button role="tab" id="Hiragana" aria-controls="panel">Hiragana</button><button role="tab" id="Katakana" aria-controls="panel">Katakana</button></div><div id="panel" role="tabpanel"><div class="script-intro"><span id="script-icon" lang="ja" aria-hidden="true"></span><div><h1 id="script-title"></h1><p>Choose kana to practise reading.</p></div></div><label class="font-picker">Kana font <select id="kana-font"><option value="gothic">Screen · Gothic</option><option value="textbook">Textbook · Kyōkasho</option><option value="mincho">Print · Minchō</option></select></label><div id="category-tabs" role="tablist" aria-label="Kana category"></div><div id="category-panel" role="tabpanel"></div></div><div class="bar actions"><span id="count"></span><button class="primary" id="start">Practice →</button></div></section>
 <section id="drill" hidden><h1>Reading practice</h1><article><div class="bar"><strong id="scriptName"></strong><button id="back">Change rows</button></div><div id="glyph" class="stage" lang="ja"></div><label for="answer">Reading in rōmaji</label><form id="answer-form"><input id="answer" class="input" placeholder="Type the reading" autocorrect="off" enterkeyhint="done" autocomplete="off" autocapitalize="none" spellcheck="false"><button type="submit" class="primary">Check</button></form><p id="feedback" role="status"></p><div class="bar"><button id="reveal">Show answer</button><span id="stats"></span></div></article><details id="chart"><summary>Kana reference</summary><div id="reference"></div></details></section></main>
 <script>
 'use strict';
@@ -120,6 +131,8 @@ function render(){
  groupControls.length=0;
  for(const s of scripts){byId(s).setAttribute('aria-selected',s===script);byId(s).tabIndex=s===script?0:-1}
  byId('panel').setAttribute('aria-labelledby',script);
+ byId('script-title').textContent=script;
+ byId('script-icon').textContent=script==='Hiragana'?'あ':'ア';
  categoryTabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',i===category);tab.tabIndex=i===category?0:-1});
  const panel=byId('category-panel');panel.replaceChildren();panel.setAttribute('aria-labelledby',categoryTabs[category].id);
  const [title,start,end]=categories[category];
