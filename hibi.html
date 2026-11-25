@@ -131,11 +131,18 @@ html.previewing .layout-preview{display:block}
 .hibi-logo{color:#4A3342}
 :root[data-theme=dark] .hibi-logo{color:#F8EEE2}
 :root[data-theme=dark] .hibi-sun{fill:#E69D98}
-#theme{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;background:transparent;color:var(--ink);border-radius:50%}
+#theme{display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:50%}
 #theme:hover{background:var(--tint)}
 #theme svg{width:22px;height:22px}
 #theme .sun-icon,:root[data-theme=dark] #theme .moon-icon{display:none}
 :root[data-theme=dark] #theme .sun-icon{display:block}
+
+.category-toolbar{grid-template-columns:minmax(0,1fr);justify-items:start}
+.category-toolbar #category-tabs{width:100%}
+.category-toolbar #category-tabs button{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:3px 6px;padding-inline:4px}
+.pill-count{padding:1px 5px;border:1px solid currentColor;border-radius:999px;font-size:11px;font-variant-numeric:tabular-nums;font-weight:650}
+.practice-action #count{color:var(--ink);font-size:15px;font-weight:750}
+#bulk-script,#bulk-rows{font-size:13px;font-weight:650}
 </style></head><body><div class="app-sheet"><header><svg class="hibi-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="108.7939" height="44" viewBox="16 0 108.7939 44" role="img" aria-labelledby="badge-title">
 <title id="badge-title">Hibi — 日々</title>
 
@@ -151,7 +158,7 @@ html.previewing .layout-preview{display:block}
 <path transform="translate(0 0)" d="M154 789H852V-76H723V668H277V-78H154ZM238 453H776V335H238ZM238 109H777V-12H238Z"/><path transform="translate(1000 0)" d="M364 607H777V488H364ZM327 220 401 320Q451 299 506.0 271.5Q561 244 613.5 213.0Q666 182 711.0 150.0Q756 118 787 87L704 -27Q676 3 633.0 36.5Q590 70 538.5 103.0Q487 136 432.5 166.5Q378 197 327 220ZM391 799 524 769Q490 667 442.0 560.5Q394 454 332.5 358.0Q271 262 197 191Q183 202 162.5 214.5Q142 227 121.0 238.5Q100 250 82 258Q138 308 186.5 373.0Q235 438 274.0 510.5Q313 583 342.5 657.0Q372 731 391 799ZM727 607H756L778 612L870 563Q845 493 806.5 415.0Q768 337 722.5 262.5Q677 188 629 127Q608 144 576.5 164.5Q545 185 521 198Q554 239 585.5 288.0Q617 337 645.0 388.5Q673 440 694.0 489.0Q715 538 727 577Z"/>
 </g>
 </svg><button id="theme" type="button" aria-label="Switch to dark mode"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.7 14.4A9.1 9.1 0 0 1 9.6 3.3a.7.7 0 0 0-.9-.8A10 10 0 1 0 21.5 15.3a.7.7 0 0 0-.8-.9Z"/></svg><svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button></header>
-<main><section id="setup"><div role="tablist" aria-label="Script" class="script-tabs"><button role="tab" id="Hiragana" aria-controls="panel">Hiragana</button><button role="tab" id="Katakana" aria-controls="panel">Katakana</button></div><div id="panel" role="tabpanel"><div class="script-intro"><span id="script-icon" lang="ja" aria-hidden="true"></span><div><h1 id="script-title"></h1><p>Choose kana to practise reading.</p></div></div><div class="practice-action"><span id="count"></span><button class="primary" id="start">Practice →</button></div><div class="category-toolbar"><div id="category-tabs" role="tablist" aria-label="Kana category"></div><button id="bulk-rows" type="button"><span id="bulk-icon" aria-hidden="true"></span><span id="bulk-label"></span></button></div><div id="category-panel" role="tabpanel"></div><fieldset class="font-options" id="kana-font"><legend>Kana font</legend><div class="font-cards"><label class="font-card" data-preview="gothic"><input type="radio" name="kana-font" value="gothic"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Gothic</strong><small>Screen</small></label><label class="font-card" data-preview="textbook"><input type="radio" name="kana-font" value="textbook"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Kyōkasho</strong><small>Textbook</small></label><label class="font-card" data-preview="mincho"><input type="radio" name="kana-font" value="mincho"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Minchō</strong><small>Print</small></label></div></fieldset></div></section>
+<main><section id="setup"><div role="tablist" aria-label="Script" class="script-tabs"><button role="tab" id="Hiragana" aria-controls="panel">Hiragana</button><button role="tab" id="Katakana" aria-controls="panel">Katakana</button></div><div id="panel" role="tabpanel"><div class="script-intro"><span id="script-icon" lang="ja" aria-hidden="true"></span><div><h1 id="script-title"></h1><p>Choose kana to practise reading.</p></div></div><div class="practice-action"><strong id="count" role="status"></strong><button id="bulk-script" type="button"></button><button class="primary" id="start">Practice →</button></div><div class="category-toolbar"><div id="category-tabs" role="tablist" aria-label="Kana category"></div><button id="bulk-rows" type="button"></button></div><div id="category-panel" role="tabpanel"></div><fieldset class="font-options" id="kana-font"><legend>Kana font</legend><div class="font-cards"><label class="font-card" data-preview="gothic"><input type="radio" name="kana-font" value="gothic"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Gothic</strong><small>Screen</small></label><label class="font-card" data-preview="textbook"><input type="radio" name="kana-font" value="textbook"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Kyōkasho</strong><small>Textbook</small></label><label class="font-card" data-preview="mincho"><input type="radio" name="kana-font" value="mincho"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Minchō</strong><small>Print</small></label></div></fieldset></div></section>
 <section id="drill" hidden><h1>Reading practice</h1><article><div class="bar"><strong id="scriptName"></strong><button id="back">Change rows</button></div><div id="glyph" class="stage" lang="ja"></div><label for="answer">Reading in rōmaji</label><form id="answer-form"><input id="answer" class="input" placeholder="Type the reading" autocorrect="off" enterkeyhint="done" autocomplete="off" autocapitalize="none" spellcheck="false"><button type="submit" class="primary">Check</button></form><p id="feedback" role="status"></p><div class="bar"><button id="reveal">Show answer</button><span id="stats"></span></div></article><details id="chart"><summary>Kana reference</summary><div id="reference"></div></details></section></main></div><div class="layout-preview" id="layout-preview"></div>
 <script>
 'use strict';
@@ -181,18 +188,62 @@ const initialFont=fontChoices.find(option=>option.value===prefs.font)||fontChoic
 initialFont.checked=true;
 document.documentElement.dataset.font=initialFont.value;
 fontPicker.onchange=event=>{document.documentElement.dataset.font=event.target.value;save()};
-const groupControls=[];
+
 function save(){try{localStorage.setItem('kanaDesk2',JSON.stringify({script,font:document.documentElement.dataset.font,theme:document.documentElement.dataset.theme,...Object.fromEntries(scripts.map(s=>[s,[...selected[s]]]))}))}catch{}}
 function theme(value){document.documentElement.dataset.theme=value;const button=byId('theme');const label=value==='dark'?'Switch to light mode':'Switch to dark mode';button.setAttribute('aria-label',label);button.title=label}
 theme(prefs.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
 byId('theme').onclick=()=>{theme(document.documentElement.dataset.theme==='dark'?'light':'dark');save()};
 const glyph=g=>script==='Hiragana'?g:katakana(g);
-function updateCount(){for(const {button,indices,title} of groupControls){const all=indices.every(i=>selected[script].has(i));const label=all?'Clear all':'Add all';byId('bulk-icon').textContent=all?'−':'+';byId('bulk-label').textContent=label;button.setAttribute('aria-label',label+' '+title)}const n=groups.reduce((sum,g,i)=>sum+(selected[script].has(i)?g.cards.length:0),0);byId('count').textContent=n+' kana selected';byId('start').disabled=!n}
+const scriptIndices=groups.map((_,i)=>i);
+function countCards(indices, selection){
+ return indices.reduce((total,i)=>total+(!selection||selection.has(i)?groups[i].cards.length:0),0);
+}
+function categoryIndices(index){
+ const [,start,end]=categories[index];
+ return scriptIndices.slice(start,end);
+}
+function updateBulkLabel(button,indices,scope){
+ const selection=selected[script];
+ const all=indices.every(i=>selection.has(i));
+ button.textContent=all?'Clear '+scope:'Select all '+scope;
+ button.disabled=!indices.length;
+}
+function toggleRows(indices){
+ const selection=selected[script];
+ const all=indices.every(i=>selection.has(i));
+ for(const i of indices){
+  if(all)selection.delete(i);
+  else selection.add(i);
+ }
+ for(const box of byId('category-panel').querySelectorAll('input[type=checkbox]')){
+  box.checked=selection.has(Number(box.dataset.group));
+ }
+ updateCount();
+ save();
+}
+function updateCount(){
+ const selection=selected[script];
+ const total=countCards(scriptIndices,selection);
+ byId('count').textContent=total+' of '+countCards(scriptIndices)+' kana selected';
+ byId('start').disabled=!total;
+ updateBulkLabel(byId('bulk-script'),scriptIndices,script);
+ updateBulkLabel(byId('bulk-rows'),categoryIndices(category),categories[category][0]);
+ categoryTabs.forEach((tab,i)=>{
+  const indices=categoryIndices(i), picked=countCards(indices,selection), available=countCards(indices);
+  tab.querySelector('.pill-count').textContent=picked+'/'+available;
+  tab.setAttribute('aria-label',categories[i][0]+', '+picked+' of '+available+' kana selected');
+ });
+}
+byId('bulk-script').onclick=()=>toggleRows(scriptIndices);
+byId('bulk-rows').onclick=()=>toggleRows(categoryIndices(category));
 const categories=[['Basic',0,10],['Voiced',10,15],['Combinations',15,groups.length]];
 let category=0;
 const categoryTabs=categories.map(([title],i)=>{
  const tab=document.createElement('button');
- tab.id='category-'+i;tab.textContent=title;tab.setAttribute('role','tab');tab.setAttribute('aria-controls','category-panel');
+ tab.id='category-'+i;tab.textContent=title;
+ const count=document.createElement('span');
+ count.className='pill-count';count.setAttribute('aria-hidden','true');tab.append(count);
+ tab.setAttribute('role','tab');tab.setAttribute('aria-controls','category-panel');
  tab.onclick=()=>{category=i;render()};
  tab.onkeydown=event=>{
   const destinations={ArrowLeft:(i+2)%3,ArrowRight:(i+1)%3,Home:0,End:2};
@@ -202,7 +253,7 @@ const categoryTabs=categories.map(([title],i)=>{
  byId('category-tabs').append(tab);return tab;
 });
 function render(){
- groupControls.length=0;
+
  for(const s of scripts){byId(s).setAttribute('aria-selected',s===script);byId(s).tabIndex=s===script?0:-1}
  byId('panel').setAttribute('aria-labelledby',script);
  byId('script-title').textContent=script;
@@ -210,15 +261,12 @@ function render(){
  byId('script-icon').textContent=script==='Hiragana'?'あ':'ア';
  categoryTabs.forEach((tab,i)=>{tab.setAttribute('aria-selected',i===category);tab.tabIndex=i===category?0:-1});
  const panel=byId('category-panel');panel.replaceChildren();panel.setAttribute('aria-labelledby',categoryTabs[category].id);
- const [title,start,end]=categories[category];
- const grid=document.createElement('div');grid.className='rows';const button=byId('bulk-rows');
+ const [,start,end]=categories[category];
+ const grid=document.createElement('div');grid.className='rows';
  panel.append(grid);
- const indices=groups.slice(start,end).map((_,j)=>start+j);
- groupControls.push({button,indices,title});
- button.onclick=()=>{const all=indices.every(i=>selected[script].has(i));indices.forEach(i=>{if(all)selected[script].delete(i);else selected[script].add(i)});for(const box of grid.querySelectorAll('input'))box.checked=!all;updateCount();save()};
  groups.slice(start,end).forEach((group,j)=>{
  const i=start+j,label=document.createElement('label'),box=document.createElement('input'),sample=document.createElement('span'),name=document.createElement('small');
- box.type='checkbox';box.checked=selected[script].has(i);box.onchange=()=>{if(box.checked)selected[script].add(i);else selected[script].delete(i);updateCount();save()};
+ box.type='checkbox';box.dataset.group=i;box.checked=selected[script].has(i);box.onchange=()=>{if(box.checked)selected[script].add(i);else selected[script].delete(i);updateCount();save()};
  name.textContent=group.cards[0][1];name.className='row-name';sample.className='kana-stack';for(const [base,romaji] of group.cards){const pair=document.createElement('span'),character=document.createElement('span'),reading=document.createElement('span');pair.className='kana-pair';character.lang='ja';character.textContent=glyph(base);reading.className='romaji';reading.textContent=romaji;pair.append(character,reading);sample.append(pair)}label.className='row';label.append(box,sample);box.setAttribute('aria-label',name.textContent);const column=document.createElement('div');column.className='row-column';column.append(name,label);grid.append(column);
  });
  updateCount();
