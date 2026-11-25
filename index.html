@@ -48,9 +48,13 @@ summary{padding:10px 0}
 .font-picker select{min-height:44px;font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px}
 .group-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:14px 0 6px}
 .group-heading h2{margin:0}
-.rows{grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:6px;direction:rtl}
+.rows{grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:6px;direction:ltr}
 .row{direction:ltr;flex-direction:column;justify-content:flex-start;gap:6px;padding:8px 2px;text-align:center}
-.row .row-name{color:var(--muted);font:12px system-ui}
+.row-name{display:block;text-align:center;color:var(--muted);font:600 12px system-ui;margin-bottom:4px}
+.row-column{display:flex;flex-direction:column}
+.row-column .row{flex:1}
+.row .kana-stack .romaji{font:12px/1.2 system-ui;color:var(--muted)}
+.kana-pair{display:grid;justify-items:center}
 .row .kana-stack{display:flex;flex-direction:column;gap:3px;font:600 22px/1.25 var(--kana-font);letter-spacing:0}
 .row .kana-stack span{font:inherit;letter-spacing:0;white-space:nowrap}
 .stage{font-family:var(--kana-font);font-weight:600}
@@ -104,7 +108,7 @@ function render(){
  groups.slice(start,end).forEach((group,j)=>{
  const i=start+j,label=document.createElement('label'),box=document.createElement('input'),sample=document.createElement('span'),name=document.createElement('small');
  box.type='checkbox';box.checked=selected[script].has(i);box.onchange=()=>{if(box.checked)selected[script].add(i);else selected[script].delete(i);updateCount();save()};
- name.textContent=group.cards[0][1]+' row';name.className='row-name';sample.className='kana-stack';sample.lang='ja';for(const [base] of group.cards){const character=document.createElement('span');character.textContent=glyph(base);sample.append(character)}label.className='row';label.append(box,name,sample);grid.append(label);
+ name.textContent=group.cards[0][1];name.className='row-name';sample.className='kana-stack';for(const [base,romaji] of group.cards){const pair=document.createElement('span'),character=document.createElement('span'),reading=document.createElement('span');pair.className='kana-pair';character.lang='ja';character.textContent=glyph(base);reading.className='romaji';reading.textContent=romaji;pair.append(character,reading);sample.append(pair)}label.className='row';label.append(box,sample);box.setAttribute('aria-label',name.textContent);const column=document.createElement('div');column.className='row-column';column.append(name,label);grid.append(column);
  });
  }updateCount();
 }
