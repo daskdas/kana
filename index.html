@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Kana Desk</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>hibi.</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@600&family=Noto+Serif+JP:wght@600&family=Zen+Kyokasho+New:wght@400;700&display=swap">
 <style>
 :root{color-scheme:light;--bg:#f4f1e9;--panel:#fffdf7;--ink:#25382e;--muted:#59665d;--line:#c5c8bb;--accent:#294c3b;--inverse:white;--tint:#e5edde;--error:#a03928}
 :root[data-theme=dark]{color-scheme:dark;--bg:#17211d;--panel:#202e27;--ink:#edf0e3;--muted:#b3beb2;--line:#4b5c51;--accent:#b4d9b7;--inverse:#17271c;--tint:#304638;--error:#ffab98}
@@ -39,8 +40,23 @@ summary{padding:10px 0}
  .stage{font-size:50px;line-height:1}
  #feedback{margin:3px 0}
 }
-</style></head><body><header><span><span class="seal" lang="ja">仮</span>Kana Desk</span><button id="theme"></button></header>
-<main><section id="setup"><h1>Choose your kana</h1><div role="tablist" aria-label="Script"><button role="tab" id="Hiragana" aria-controls="panel">Hiragana</button><button role="tab" id="Katakana" aria-controls="panel">Katakana</button></div><div id="panel" role="tabpanel"></div><div class="bar actions"><span id="count"></span><button class="primary" id="start">Practice →</button></div></section>
+
+:root{--kana-font:"Noto Sans JP","Hiragino Sans",Meiryo,sans-serif}
+:root[data-font=textbook]{--kana-font:"Zen Kyokasho New","Klee One",serif}
+:root[data-font=mincho]{--kana-font:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+.font-picker{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.font-picker select{min-height:44px;font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px}
+.group-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:14px 0 6px}
+.group-heading h2{margin:0}
+.rows{grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:6px;direction:rtl}
+.row{direction:ltr;flex-direction:column;justify-content:flex-start;gap:6px;padding:8px 2px;text-align:center}
+.row .row-name{color:var(--muted);font:12px system-ui}
+.row .kana-stack{display:flex;flex-direction:column;gap:3px;font:600 22px/1.25 var(--kana-font);letter-spacing:0}
+.row .kana-stack span{font:inherit;letter-spacing:0;white-space:nowrap}
+.stage{font-family:var(--kana-font);font-weight:600}
+@media(min-width:651px){.rows{grid-template-columns:repeat(auto-fill,minmax(74px,1fr))}}
+</style></head><body><header><span><span class="seal" lang="ja">日々</span>hibi.</span><button id="theme"></button></header>
+<main><section id="setup"><h1>Choose your kana</h1><div role="tablist" aria-label="Script"><button role="tab" id="Hiragana" aria-controls="panel">Hiragana</button><button role="tab" id="Katakana" aria-controls="panel">Katakana</button></div><label class="font-picker">Kana font <select id="kana-font"><option value="gothic">Screen · Gothic</option><option value="textbook">Textbook · Kyōkasho</option><option value="mincho">Print · Minchō</option></select></label><div id="panel" role="tabpanel"></div><div class="bar actions"><span id="count"></span><button class="primary" id="start">Practice →</button></div></section>
 <section id="drill" hidden><h1>Reading practice</h1><article><div class="bar"><strong id="scriptName"></strong><button id="back">Change rows</button></div><div id="glyph" class="stage" lang="ja"></div><label for="answer">Reading in rōmaji</label><input id="answer" class="input" placeholder="Type the reading" autocorrect="off" enterkeyhint="done" autocomplete="off" autocapitalize="none" spellcheck="false"><p id="feedback" role="status"></p><div class="bar"><button id="reveal">Show answer</button><span id="stats"></span></div></article><details id="chart"><summary>Kana reference</summary><div id="reference"></div></details></section></main>
 <script>
 'use strict';
@@ -64,21 +80,31 @@ function read(key){try{return JSON.parse(localStorage.getItem(key))||{}}catch{re
 const old=read('kanaDesk1'),prefs=read('kanaDesk2');
 let script=scripts.includes(prefs.script)?prefs.script:old.mode==='Katakana'?'Katakana':'Hiragana';
 const selected=Object.fromEntries(scripts.map(s=>[s,new Set(prefs[s]??(Array.isArray(old.rows)?old.rows:groups.slice(0,10).map((_,i)=>i)))]));
-function save(){try{localStorage.setItem('kanaDesk2',JSON.stringify({script,theme:document.documentElement.dataset.theme,...Object.fromEntries(scripts.map(s=>[s,[...selected[s]]]))}))}catch{}}
+const fontPicker=byId('kana-font');
+fontPicker.value=['textbook','mincho'].includes(prefs.font)?prefs.font:'gothic';
+document.documentElement.dataset.font=fontPicker.value;
+fontPicker.onchange=()=>{document.documentElement.dataset.font=fontPicker.value;save()};
+const groupControls=[];
+function save(){try{localStorage.setItem('kanaDesk2',JSON.stringify({script,font:fontPicker.value,theme:document.documentElement.dataset.theme,...Object.fromEntries(scripts.map(s=>[s,[...selected[s]]]))}))}catch{}}
 function theme(value){document.documentElement.dataset.theme=value;byId('theme').textContent=value==='dark'?'Light mode':'Dark mode'}
 theme(prefs.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
 byId('theme').onclick=()=>{theme(document.documentElement.dataset.theme==='dark'?'light':'dark');save()};
 const glyph=g=>script==='Hiragana'?g:katakana(g);
-function updateCount(){const n=groups.reduce((sum,g,i)=>sum+(selected[script].has(i)?g.cards.length:0),0);byId('count').textContent=n+' kana selected';byId('start').disabled=!n}
+function updateCount(){for(const {button,indices,title} of groupControls){const all=indices.every(i=>selected[script].has(i));button.textContent=all?'Clear all':'Select all';button.setAttribute('aria-label',button.textContent+' '+title)}const n=groups.reduce((sum,g,i)=>sum+(selected[script].has(i)?g.cards.length:0),0);byId('count').textContent=n+' kana selected';byId('start').disabled=!n}
 function render(){
+ groupControls.length=0;
  for(const s of scripts){byId(s).setAttribute('aria-selected',s===script);byId(s).tabIndex=s===script?0:-1}
  const panel=byId('panel');panel.replaceChildren();panel.setAttribute('aria-labelledby',script);
  for(const [title,start,end] of [['Basic rows',0,10],['Voiced rows',10,15],['Combinations',15,groups.length]]){
- const heading=document.createElement('h2');heading.textContent=title;const grid=document.createElement('div');grid.className='rows';panel.append(heading,grid);
+ const heading=document.createElement('h2');heading.textContent=title;const grid=document.createElement('div');grid.className='rows';const groupHeader=document.createElement('div'),button=document.createElement('button');
+ groupHeader.className='group-heading';groupHeader.append(heading,button);panel.append(groupHeader,grid);
+ const indices=groups.slice(start,end).map((_,j)=>start+j);
+ groupControls.push({button,indices,title});
+ button.onclick=()=>{const all=indices.every(i=>selected[script].has(i));indices.forEach(i=>{if(all)selected[script].delete(i);else selected[script].add(i)});for(const box of grid.querySelectorAll('input'))box.checked=!all;updateCount();save()};
  groups.slice(start,end).forEach((group,j)=>{
  const i=start+j,label=document.createElement('label'),box=document.createElement('input'),sample=document.createElement('span'),name=document.createElement('small');
  box.type='checkbox';box.checked=selected[script].has(i);box.onchange=()=>{if(box.checked)selected[script].add(i);else selected[script].delete(i);updateCount();save()};
- name.textContent=group.cards[0][1]+' row';sample.append(name,group.cards.map(c=>glyph(c[0])).join(' '));label.className='row';label.append(box,sample);grid.append(label);
+ name.textContent=group.cards[0][1]+' row';name.className='row-name';sample.className='kana-stack';sample.lang='ja';for(const [base] of group.cards){const character=document.createElement('span');character.textContent=glyph(base);sample.append(character)}label.className='row';label.append(box,name,sample);grid.append(label);
  });
  }updateCount();
 }
