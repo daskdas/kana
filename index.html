@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Kana Desk</title>
+<style>
+:root{color-scheme:light;--bg:#f4f1e9;--panel:#fffdf7;--ink:#25382e;--muted:#59665d;--line:#c5c8bb;--accent:#294c3b;--inverse:white;--tint:#e5edde;--error:#a03928}
+:root[data-theme=dark]{color-scheme:dark;--bg:#17211d;--panel:#202e27;--ink:#edf0e3;--muted:#b3beb2;--line:#4b5c51;--accent:#b4d9b7;--inverse:#17271c;--tint:#304638;--error:#ffab98}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif}main,header{width:min(920px,92%);margin:auto}header,.bar{display:flex;align-items:center;justify-content:space-between;gap:12px}header{padding:18px 0;border-bottom:1px solid var(--line);font-weight:750}.seal{background:#a53d2d;color:white;border-radius:6px;padding:4px 8px;margin-right:8px}h1{font:normal clamp(40px,7vw,68px)/1.1 Georgia,serif;letter-spacing:-.05em;margin:28px 0 18px}button,input{font:inherit}button{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer}button:disabled{opacity:.5;cursor:default}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.primary,[role=tab][aria-selected=true]{background:var(--accent);color:var(--inverse);border-color:var(--accent)}[role=tablist]{display:flex;gap:6px;margin-bottom:18px}.bar{flex-wrap:wrap}.rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:7px}.row{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px;cursor:pointer}.row:has(:checked){background:var(--tint)}input[type=checkbox]{accent-color:var(--accent);width:17px;height:17px}.row small{display:block;color:var(--muted);font:12px system-ui}.row span{letter-spacing:.08em}h2{font:normal 23px Georgia,serif;margin:20px 0 9px}.actions{position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:12px 0;margin-top:18px}article{max-width:560px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin:18px auto}.stage{text-align:center;font:clamp(82px,18vw,148px)/1.5 serif}.input{display:block;width:100%;margin:6px 0;padding:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:7px}.input[aria-invalid=true]{border:2px solid var(--error)}#feedback{min-height:1.6em;color:var(--accent)}#feedback.error{color:var(--error)}details{margin:12px 0 24px}summary{cursor:pointer}.entry{display:inline-block;margin:3px 12px 3px 0}main{padding-bottom:22px}
+
+button,summary{min-height:44px;touch-action:manipulation}
+summary{padding:10px 0}
+.actions{z-index:2;padding-bottom:max(12px,env(safe-area-inset-bottom))}
+#feedback{overflow-wrap:anywhere}
+@media(max-width:650px){
+ body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+ header,main{width:calc(100% - 24px)}
+ header{padding:6px 0}
+ h1{font-size:36px;margin:17px 0 12px}
+ [role=tablist]{display:grid;grid-template-columns:1fr 1fr;margin-bottom:12px}
+ .rows{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ .row{padding:7px;gap:5px;min-height:50px}
+ .row span{letter-spacing:0;font:15px/1.35 system-ui,sans-serif;overflow-wrap:anywhere}
+ .row small{margin-bottom:2px}
+ input[type=checkbox]{flex:none;width:16px;height:16px;margin:0}
+ h2{font-size:20px;margin:14px 0 6px}
+ #setup{padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+ .actions{position:fixed;left:0;right:0;bottom:0;padding:8px max(12px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));margin:0}
+ .actions .primary{min-width:45%}
+ body.practicing header,body.practicing #drill h1{display:none}
+ #drill{padding-top:max(6px,env(safe-area-inset-top))}
+ #drill article{padding:10px 12px;margin:0 auto}
+ .stage{font-size:clamp(52px,calc(var(--visible-height,100dvh) * .17),106px);line-height:1.15;padding:6px 0}
+ .input{font-size:18px;margin:4px 0;padding:8px 10px}
+ #feedback{margin:4px 0;min-height:24px}
+ #chart{margin:4px 0}
+}
+@media(max-width:350px){.row span{font-size:14px}}
+@media(max-height:460px) and (orientation:landscape){
+ body.practicing header,#drill h1{display:none}
+ #drill article{margin:2px auto;padding:6px 12px}
+ .stage{font-size:50px;line-height:1}
+ #feedback{margin:3px 0}
+}
+</style></head><body><header><span><span class="seal" lang="ja">仮</span>Kana Desk</span><button id="theme"></button></header>
+<main><section id="setup"><h1>Choose your kana</h1><div role="tablist" aria-label="Script"><button role="tab" id="Hiragana" aria-controls="panel">Hiragana</button><button role="tab" id="Katakana" aria-controls="panel">Katakana</button></div><div id="panel" role="tabpanel"></div><div class="bar actions"><span id="count"></span><button class="primary" id="start">Practice →</button></div></section>
+<section id="drill" hidden><h1>Reading practice</h1><article><div class="bar"><strong id="scriptName"></strong><button id="back">Change rows</button></div><div id="glyph" class="stage" lang="ja"></div><label for="answer">Reading in rōmaji</label><input id="answer" class="input" placeholder="Type the reading" autocorrect="off" enterkeyhint="done" autocomplete="off" autocapitalize="none" spellcheck="false"><p id="feedback" role="status"></p><div class="bar"><button id="reveal">Show answer</button><span id="stats"></span></div></article><details id="chart"><summary>Kana reference</summary><div id="reference"></div></details></section></main>
+<script>
+'use strict';
+const byId=id=>document.getElementById(id);
+const groups=[
+ ['Vowels','あいうえお','a i u e o'],['K','かきくけこ','ka ki ku ke ko'],['S','さしすせそ','sa shi su se so'],['T','たちつてと','ta chi tsu te to'],['N','なにぬねの','na ni nu ne no'],['H','はひふへほ','ha hi fu he ho'],['M','まみむめも','ma mi mu me mo'],['Y','やゆよ','ya yu yo'],['R','らりるれろ','ra ri ru re ro'],['W + ん','わをん','wa wo n'],['G','がぎぐげご','ga gi gu ge go'],['Z','ざじずぜぞ','za ji zu ze zo'],['D','だぢづでど','da ji zu de do'],['B','ばびぶべぼ','ba bi bu be bo'],['P','ぱぴぷぺぽ','pa pi pu pe po']
+].map(([label,glyphs,sounds])=>({label,cards:[...glyphs].map((g,i)=>[g,sounds.split(' ')[i]])}));
+for(const [g,prefix] of Object.entries({'き':'ky','し':'sh','ち':'ch','に':'ny','ひ':'hy','み':'my','り':'ry','ぎ':'gy','じ':'j','び':'by','ぴ':'py'})){
+ groups.push({label:prefix+'…',cards:[...'ゃゅょ'].map((suffix,i)=>[g+suffix,prefix+'auo'[i]])});
+}
+const aliases={し:['si'],ち:['ti'],つ:['tu'],ふ:['hu'],じ:['zi'],ぢ:['di','zi'],づ:['du'],を:['o'],ん:['nn']};
+const katakana=g=>[...g].map(c=>String.fromCharCode(c.charCodeAt(0)+96)).join('');
+function updateVisibleHeight(){
+ const height=window.visualViewport?.height || window.innerHeight;
+ document.documentElement.style.setProperty('--visible-height',height+'px');
+}
+window.visualViewport?.addEventListener('resize',updateVisibleHeight);
+updateVisibleHeight();
+const scripts=['Hiragana','Katakana'];
+function read(key){try{return JSON.parse(localStorage.getItem(key))||{}}catch{return {}}}
+const old=read('kanaDesk1'),prefs=read('kanaDesk2');
+let script=scripts.includes(prefs.script)?prefs.script:old.mode==='Katakana'?'Katakana':'Hiragana';
+const selected=Object.fromEntries(scripts.map(s=>[s,new Set(prefs[s]??(Array.isArray(old.rows)?old.rows:groups.slice(0,10).map((_,i)=>i)))]));
+function save(){try{localStorage.setItem('kanaDesk2',JSON.stringify({script,theme:document.documentElement.dataset.theme,...Object.fromEntries(scripts.map(s=>[s,[...selected[s]]]))}))}catch{}}
+function theme(value){document.documentElement.dataset.theme=value;byId('theme').textContent=value==='dark'?'Light mode':'Dark mode'}
+theme(prefs.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+byId('theme').onclick=()=>{theme(document.documentElement.dataset.theme==='dark'?'light':'dark');save()};
+const glyph=g=>script==='Hiragana'?g:katakana(g);
+function updateCount(){const n=groups.reduce((sum,g,i)=>sum+(selected[script].has(i)?g.cards.length:0),0);byId('count').textContent=n+' kana selected';byId('start').disabled=!n}
+function render(){
+ for(const s of scripts){byId(s).setAttribute('aria-selected',s===script);byId(s).tabIndex=s===script?0:-1}
+ const panel=byId('panel');panel.replaceChildren();panel.setAttribute('aria-labelledby',script);
+ for(const [title,start,end] of [['Basic rows',0,10],['Voiced rows',10,15],['Combinations',15,groups.length]]){
+ const heading=document.createElement('h2');heading.textContent=title;const grid=document.createElement('div');grid.className='rows';panel.append(heading,grid);
+ groups.slice(start,end).forEach((group,j)=>{
+ const i=start+j,label=document.createElement('label'),box=document.createElement('input'),sample=document.createElement('span'),name=document.createElement('small');
+ box.type='checkbox';box.checked=selected[script].has(i);box.onchange=()=>{if(box.checked)selected[script].add(i);else selected[script].delete(i);updateCount();save()};
+ name.textContent=group.cards[0][1]+' row';sample.append(name,group.cards.map(c=>glyph(c[0])).join(' '));label.className='row';label.append(box,sample);grid.append(label);
+ });
+ }updateCount();
+}
+for(const s of scripts){byId(s).onclick=()=>{script=s;render();save()};byId(s).onkeydown=e=>{if(['ArrowRight','ArrowLeft','Home','End'].includes(e.key)){e.preventDefault();const dest=e.key==='Home'?scripts[0]:e.key==='End'?scripts[1]:scripts.find(t=>t!==s);byId(dest).click();byId(dest).focus()}}}
+const answer=byId('answer'),feedback=byId('feedback');
+let deck=[],bag=[],queue=[],current,correct,total,missed,revealed;
+function message(text,error=false){feedback.textContent=text;feedback.className=error?'error':''}
+function next(){
+ if(!bag.length)bag=deck.slice();
+ let i=Math.floor(Math.random()*bag.length);if(bag.length>1&&bag[i]===current)i=(i+1)%bag.length;
+ const due=queue.findIndex(q=>q.after<=total&&q.card!==current);
+ current=due>=0?queue.splice(due,1)[0].card:bag.splice(i,1)[0];
+ byId('glyph').textContent=glyph(current[0]);answer.value='';answer.disabled=false;answer.setAttribute('aria-invalid','false');missed=revealed=false;byId('reveal').textContent='Show answer';answer.focus();
+}
+function score(){total++;if(!missed)correct++;else{queue=queue.filter(q=>q.card!==current);queue.push({card:current,after:total+2})}byId('stats').textContent=correct+' / '+total+' first try'}
+function readings([base,r]){
+ const forms=[r,...(aliases[base]||[])];if(base.length===2)forms.push(r.replace(/^sh/,'sy').replace(/^ch/,'ty').replace(/^j/,'zy'),r.replace(/^ch/,'cy').replace(/^j/,'jy'));return forms;
+}
+answer.oninput=()=>{
+ const value=answer.value.trim().toLowerCase(),forms=readings(current);
+ if(forms.includes(value)){message('Correct · '+glyph(current[0])+' = '+current[1]);score();next();return}
+ const invalid=!forms.some(r=>r.startsWith(value));answer.setAttribute('aria-invalid',String(invalid));
+ if(invalid){missed=true;message('Try again or show the answer.',true);answer.select()}else message('');
+};
+byId('reveal').onclick=()=>{if(revealed){message('');next();return}missed=true;score();revealed=true;message(glyph(current[0])+' = '+current[1]);answer.disabled=true;byId('reveal').textContent='Next kana';byId('reveal').focus()};
+byId('start').onclick=()=>{
+ deck=groups.flatMap((g,i)=>selected[script].has(i)?g.cards:[]);if(!deck.length)return;
+ bag=[];queue=[];current=null;correct=total=0;byId('stats').textContent='0 / 0 first try';message('');
+ byId('scriptName').textContent=script;byId('reference').replaceChildren();for(const [g,r] of deck){const entry=document.createElement('span');entry.className='entry';entry.textContent=glyph(g)+' '+r;byId('reference').append(entry)}
+ document.body.classList.add('practicing');byId('chart').open=false;byId('setup').hidden=true;byId('drill').hidden=false;window.scrollTo(0,0);next();
+};
+byId('back').onclick=()=>{document.body.classList.remove('practicing');byId('drill').hidden=true;byId('setup').hidden=false;byId(script).focus()};render();
+</script></body></html>
