@@ -210,6 +210,68 @@ html{scrollbar-gutter:stable}
 .bulk-icon{font-size:15px;line-height:1;width:1ch;text-align:center}
 #back{display:inline-flex;align-items:center;gap:6px;min-height:44px}
 #deck-size{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+#trial-offer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:0 12px 18px 0}
+#trial-offer[hidden]{display:none}
+#trial-offer h2{font:600 16px system-ui;margin:0}
+#trial-offer p,.trial-caption{color:var(--muted);font-size:14px;margin:4px 0}
+#trial-start,#trial-retry{min-height:44px}
+.drill-meta{display:flex;align-items:baseline;gap:10px;font-variant-numeric:tabular-nums}
+#trial-clock{color:var(--practice-ink);font-weight:700}
+#trial-time{font-size:42px;font-weight:750;color:var(--practice-ink);margin:6px 0;font-variant-numeric:tabular-nums}
+#trial-recap .bar{justify-content:flex-start}
+.reading-practice #glyph{background:radial-gradient(circle closest-side,color-mix(in srgb,var(--practice-fill) 13%,transparent) 0%,transparent 100%)}
+#feedback.success{color:var(--practice-ink);font-weight:650}
+.correct-mark{display:inline-grid;place-items:center;width:1.25em;height:1.25em;margin-inline-end:.4em;border-radius:50%;background:var(--bulk-hover);line-height:1}
+@media(prefers-reduced-motion:no-preference){
+ .correct-mark{animation:correct-mark-in 180ms ease-out}
+ @keyframes correct-mark-in{from{transform:scale(.65);opacity:.5}to{transform:scale(1);opacity:1}}
+}
+#combo-meter{margin:12px 0 6px}
+.combo-copy{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:24px;color:var(--muted);font-size:13px}
+#combo-count{color:var(--ink);margin-inline-start:4px;font-variant-numeric:tabular-nums}
+#combo-milestone{color:var(--practice-ink);font-weight:700;text-align:end}
+.combo-track{position:relative;overflow:hidden;height:18px;display:grid;align-items:center}
+#combo-progress{height:var(--combo-thickness,6px);border-radius:999px;background:var(--tint);overflow:hidden}
+.combo-fill{height:100%;width:var(--combo-fill,0%);background:var(--combo-color,var(--practice-ink));border-radius:inherit}
+#combo-burst{position:absolute;inset:0;pointer-events:none}
+.combo-spark,.prompt-spark{display:none}
+.prompt-stage{position:relative;overflow:hidden}
+.reading-practice .prompt-stage{--spark-lane:clamp(26px,8vw,50px);display:flex;justify-content:center;padding-inline:var(--spark-lane)}
+.prompt-center{position:relative;min-width:0}
+#prompt-burst{position:absolute;inset:0;pointer-events:none}
+.prompt-spark-lane{position:absolute;top:0;bottom:0;width:var(--spark-lane);overflow:hidden}
+.prompt-spark-lane:first-child{right:100%}
+.prompt-spark-lane:last-child{left:100%}
+@media(prefers-reduced-motion:no-preference){
+ .combo-fill{transition:width 150ms ease-out}
+ #combo-meter[data-tier="1"]{--flow-pattern:repeating-linear-gradient(90deg,transparent 0 36px,#fff4 46px,transparent 64px);--flow-speed:2s;--combo-thickness:7px}
+ #combo-meter[data-tier="2"]{--flow-pattern:repeating-linear-gradient(90deg,transparent 0 20px,#ffd9aa8c 27px,transparent 32px);--flow-speed:1.5s;--combo-thickness:8px;--combo-color:#b44c37}
+ #combo-meter[data-tier="3"]{--flow-pattern:repeating-linear-gradient(90deg,transparent 0 8px,#ffbe73b3 17px,#fff5 20px,transparent 32px);--flow-speed:1.2s;--combo-thickness:9px;--combo-color:#b84b31}
+ #combo-meter[data-tier="4"]{--flow-pattern:repeating-linear-gradient(90deg,#f89b4f60 0 8px,transparent 16px,#ffda829e 28px,transparent 32px);--flow-speed:1s;--combo-thickness:10px;--combo-color:#c65632}
+ #combo-meter[data-tier="5"]{--flow-pattern:repeating-linear-gradient(90deg,#ef8b3f 0,#fbd179 10px,#e87e40 24px,#ef8b3f 32px);--flow-speed:.9s;--combo-thickness:12px}
+ #combo-meter[data-tier="6"]{--flow-pattern:repeating-linear-gradient(90deg,#ed7440 0,#f8af56 22px,#ffe69b 36px,#fff3c5 42px,#f8af56 51px,#ed7440 64px);--flow-speed:.8s;--combo-thickness:14px}
+ #combo-meter:not([data-tier="0"]) .combo-fill{background-image:var(--flow-pattern);animation:combo-flow var(--flow-speed) linear infinite}
+ @keyframes combo-flow{to{background-position-x:64px}}
+ .prompt-spark{display:block;position:absolute;left:var(--spark-origin);top:50%;width:var(--spark-size);height:var(--spark-size);animation:prompt-spark-out var(--burst-duration) cubic-bezier(.17,.67,.33,1) var(--spark-delay) both}
+ .prompt-spark::before{content:"";display:block;width:100%;height:100%;background:var(--spark-color,var(--practice-ink));clip-path:polygon(50% 0,62% 36%,100% 50%,62% 64%,50% 100%,38% 64%,0 50%,38% 36%)}
+ .prompt-spark:nth-child(3n)::before{clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+ #prompt-burst[data-bright="true"] .prompt-spark:nth-child(2n){--spark-color:#e08033}
+ #prompt-burst[data-bright="true"] .prompt-spark:nth-child(3n){--spark-color:#edb346}
+ #prompt-burst[data-finale="true"] .prompt-spark{filter:drop-shadow(0 0 4px var(--spark-color,#f6a74e))}
+ #prompt-burst[data-finale="true"] .prompt-spark:nth-child(5n){--spark-color:var(--spark-highlight,#ad531e)}
+ :root[data-theme=dark]{--spark-highlight:#ffe6a3}
+ @keyframes prompt-spark-out{
+  from{transform:translate(-50%,-50%) scale(.35);opacity:0}
+  18%{opacity:1}
+  60%{opacity:.95}
+  to{transform:translate(calc(-50% + var(--spark-x)),calc(-50% + var(--spark-y))) rotate(var(--spark-spin)) scale(.5);opacity:0}
+ }
+ .combo-spark{display:block;position:absolute;left:clamp(14px,var(--combo-fill),calc(100% - 14px));top:50%;width:4px;height:4px;border-radius:1px;background:var(--practice-ink);animation:combo-spark-out var(--burst-duration,480ms) ease-out both}
+ @keyframes combo-spark-out{
+  from{transform:translate(-50%,-50%) rotate(var(--angle)) translateX(0);opacity:1}
+  to{transform:translate(-50%,-50%) rotate(var(--angle)) translateX(var(--spark-travel,22px)) scale(.45);opacity:0}
+ }
+}
 </style></head><body><div class="app-sheet"><header><button type="button" id="home" aria-label="Hibi home"><svg class="hibi-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="108.7939" height="44" viewBox="16 0 108.7939 44" role="img" aria-labelledby="badge-title">
 <title id="badge-title">Hibi — 日々</title>
 
@@ -225,8 +287,8 @@ html{scrollbar-gutter:stable}
 <path transform="translate(0 0)" d="M154 789H852V-76H723V668H277V-78H154ZM238 453H776V335H238ZM238 109H777V-12H238Z"/><path transform="translate(1000 0)" d="M364 607H777V488H364ZM327 220 401 320Q451 299 506.0 271.5Q561 244 613.5 213.0Q666 182 711.0 150.0Q756 118 787 87L704 -27Q676 3 633.0 36.5Q590 70 538.5 103.0Q487 136 432.5 166.5Q378 197 327 220ZM391 799 524 769Q490 667 442.0 560.5Q394 454 332.5 358.0Q271 262 197 191Q183 202 162.5 214.5Q142 227 121.0 238.5Q100 250 82 258Q138 308 186.5 373.0Q235 438 274.0 510.5Q313 583 342.5 657.0Q372 731 391 799ZM727 607H756L778 612L870 563Q845 493 806.5 415.0Q768 337 722.5 262.5Q677 188 629 127Q608 144 576.5 164.5Q545 185 521 198Q554 239 585.5 288.0Q617 337 645.0 388.5Q673 440 694.0 489.0Q715 538 727 577Z"/>
 </g>
 </svg></button><button id="theme" type="button" aria-label="Switch to dark mode"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.7 14.4A9.1 9.1 0 0 1 9.6 3.3a.7.7 0 0 0-.9-.8A10 10 0 1 0 21.5 15.3a.7.7 0 0 0-.8-.9Z"/></svg><svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button></header>
-<main><section id="setup"><div role="tablist" aria-label="Practice setup" class="script-tabs"><button role="tab" id="Hiragana" aria-controls="panel">Hiragana</button><button role="tab" id="Katakana" aria-controls="panel">Katakana</button><button type="button" role="tab" id="Kanji" aria-controls="kanji-panel">Kanji</button><button type="button" role="tab" id="Settings" aria-controls="settings-panel">Settings</button></div><div id="panel" role="tabpanel"><div class="script-intro"><span id="script-icon" lang="ja" aria-hidden="true"></span><div><h1 id="script-title" class="setup-title"></h1><p>Choose characters and words to practise.</p></div></div><div class="session-bar"><div><strong>Your practice</strong><p id="session-mix"></p></div><button class="primary" id="start"><span id="practice-label">Practice</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M3 1.5 10.5 6 3 10.5Z"/></svg></button></div><div class="selection-scope"><strong id="count" role="status"></strong><button id="bulk-script" type="button"></button></div><section aria-labelledby="characters-title"><h2 id="characters-title">Characters</h2><div id="category-cards"></div></section><section aria-labelledby="words-title"><h2 id="words-title">Words</h2><div id="word-cards"></div></section></div><div id="kanji-panel" role="tabpanel" aria-labelledby="Kanji" hidden><div class="script-intro"><span class="kanji-icon" lang="ja" aria-hidden="true">漢</span><div><h1 class="setup-title">Kanji</h1><p>Practise reading kanji.</p></div></div></div><div id="settings-panel" role="tabpanel" aria-labelledby="Settings" hidden><div class="script-intro"><span class="settings-icon" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h6m4 0h6M4 12h11m4 0h1M4 18h2m4 0h10M10 3v6m9 0v6M6 15v6"/></svg></span><div><h1 class="setup-title">Settings</h1><p>Adjust how you practise.</p></div></div><fieldset class="font-options" id="kana-font" aria-describedby="font-description"><legend>Kana font</legend><p class="setting-description" id="font-description">Choose how kana look in the selection cards and practice prompts.</p><div class="font-cards"><label class="font-card" data-preview="gothic"><input type="radio" name="kana-font" value="gothic"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Gothic</strong><small>Screen</small></label><label class="font-card" data-preview="textbook"><input type="radio" name="kana-font" value="textbook"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Kyōkasho</strong><small>Textbook</small></label><label class="font-card" data-preview="mincho"><input type="radio" name="kana-font" value="mincho"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Minchō</strong><small>Print</small></label></div></fieldset><fieldset class="font-options" aria-describedby="reference-description"><legend>Kana reference</legend><p class="setting-description" id="reference-description">Look up readings for your selected kana during a drill, grouped by script and category.</p><label class="reference-option"><input id="reference-enabled" type="checkbox">Show kana reference during practice</label></fieldset></div></section>
-<section id="drill" hidden><h1>Reading practice</h1><article><div class="bar"><button id="back" type="button"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m7-7-7 7 7 7"/></svg>Back</button><span id="deck-size"></span></div><div id="glyph" class="stage" lang="ja"></div><label for="answer">Reading in rōmaji</label><form id="answer-form"><input id="answer" class="input" placeholder="Type the reading" autocorrect="off" enterkeyhint="done" autocomplete="off" autocapitalize="none" spellcheck="false"><button type="submit" class="primary">Check</button></form><p id="feedback" role="status"></p><div class="bar"><button id="reveal">Show answer</button><span id="stats"></span></div></article><details id="chart"><summary>Kana reference</summary><div id="reference"></div></details></section></main></div><div class="layout-preview" id="layout-preview"></div>
+<main><section id="setup"><div role="tablist" aria-label="Practice setup" class="script-tabs"><button role="tab" id="Hiragana" aria-controls="panel">Hiragana</button><button role="tab" id="Katakana" aria-controls="panel">Katakana</button><button type="button" role="tab" id="Kanji" aria-controls="kanji-panel">Kanji</button><button type="button" role="tab" id="Settings" aria-controls="settings-panel">Settings</button></div><div id="panel" role="tabpanel"><div class="script-intro"><span id="script-icon" lang="ja" aria-hidden="true"></span><div><h1 id="script-title" class="setup-title"></h1><p>Choose characters and words to practise.</p></div></div><div class="session-bar"><div><strong>Your practice</strong><p id="session-mix"></p></div><button class="primary" id="start"><span id="practice-label">Practice</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M3 1.5 10.5 6 3 10.5Z"/></svg></button></div><section id="trial-offer" aria-labelledby="trial-title"><div><h2 id="trial-title">Time Trial</h2><p>Basic Hiragana · 46 cards <span id="trial-best"></span></p></div><button id="trial-start" type="button">Start Time Trial</button></section><div class="selection-scope"><strong id="count" role="status"></strong><button id="bulk-script" type="button"></button></div><section aria-labelledby="characters-title"><h2 id="characters-title">Characters</h2><div id="category-cards"></div></section><section aria-labelledby="words-title"><h2 id="words-title">Words</h2><div id="word-cards"></div></section></div><div id="kanji-panel" role="tabpanel" aria-labelledby="Kanji" hidden><div class="script-intro"><span class="kanji-icon" lang="ja" aria-hidden="true">漢</span><div><h1 class="setup-title">Kanji</h1><p>Practise reading kanji.</p></div></div></div><div id="settings-panel" role="tabpanel" aria-labelledby="Settings" hidden><div class="script-intro"><span class="settings-icon" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h6m4 0h6M4 12h11m4 0h1M4 18h2m4 0h10M10 3v6m9 0v6M6 15v6"/></svg></span><div><h1 class="setup-title">Settings</h1><p>Adjust how you practise.</p></div></div><fieldset class="font-options" id="kana-font" aria-describedby="font-description"><legend>Kana font</legend><p class="setting-description" id="font-description">Choose how kana look in the selection cards and practice prompts.</p><div class="font-cards"><label class="font-card" data-preview="gothic"><input type="radio" name="kana-font" value="gothic"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Gothic</strong><small>Screen</small></label><label class="font-card" data-preview="textbook"><input type="radio" name="kana-font" value="textbook"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Kyōkasho</strong><small>Textbook</small></label><label class="font-card" data-preview="mincho"><input type="radio" name="kana-font" value="mincho"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Minchō</strong><small>Print</small></label></div></fieldset><fieldset class="font-options" aria-describedby="reference-description"><legend>Kana reference</legend><p class="setting-description" id="reference-description">Look up readings for your selected kana during a drill, grouped by script and category.</p><label class="reference-option"><input id="reference-enabled" type="checkbox">Show kana reference during practice</label></fieldset><fieldset class="font-options" aria-describedby="timer-description"><legend>Time Trial</legend><p class="setting-description" id="timer-description">Your finish time always appears in the recap.</p><label class="reference-option"><input id="trial-timer-enabled" type="checkbox">Show the live timer</label></fieldset><fieldset class="font-options" id="sound-settings" aria-describedby="sound-description"><legend>Sound</legend><p class="setting-description" id="sound-description">Play a short chime when you reach a combo milestone in regular practice.</p><label class="reference-option"><input id="combo-sound-enabled" type="checkbox">Play combo sounds</label></fieldset><fieldset class="font-options" aria-describedby="pronunciation-description"><legend>Pronunciation</legend><p class="setting-description" id="pronunciation-description">Hear the Japanese pronunciation after a correct answer.</p><label class="reference-option"><input id="pronunciation-enabled" type="checkbox">Read correct answers aloud</label><p class="setting-description" id="pronunciation-status" role="status" hidden></p></fieldset></div></section>
+<section id="drill" hidden><h1 id="drill-title">Reading practice</h1><article id="reading-card"><div class="bar"><button id="back" type="button"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m7-7-7 7 7 7"/></svg>Back</button><div class="drill-meta"><span id="deck-size"></span><span id="trial-clock" aria-label="Elapsed time" hidden></span></div></div><div id="combo-meter" hidden><div class="combo-copy"><span><span id="combo-label">Combo</span> <strong id="combo-count">0</strong></span><span id="combo-milestone" role="status"></span></div><div class="combo-track"><div id="combo-progress" role="progressbar" aria-labelledby="combo-label" aria-valuemin="0" aria-valuemax="60" aria-valuenow="0"><div class="combo-fill"></div></div><div id="combo-burst" aria-hidden="true"></div></div></div><div class="prompt-stage"><div class="prompt-center"><div id="glyph" class="stage" lang="ja"></div><div id="prompt-burst" aria-hidden="true"></div></div></div><label for="answer">Reading in rōmaji</label><form id="answer-form"><input id="answer" class="input" placeholder="Type the reading" autocorrect="off" enterkeyhint="done" autocomplete="off" autocapitalize="none" spellcheck="false"><button type="submit" class="primary">Check</button></form><p id="feedback" role="status"></p><div class="bar"><button id="reveal">Show answer</button><span id="stats"></span></div></article><article id="trial-recap" hidden><p class="trial-caption">Time Trial · Basic Hiragana</p><h2 id="trial-finish" tabindex="-1">Round complete</h2><p id="trial-time"></p><p id="trial-result"></p><p id="trial-accuracy"></p><div class="bar"><button class="primary" id="trial-retry" type="button">Beat your best</button><button id="trial-back" type="button">Back to setup</button></div></article><details id="chart"><summary>Kana reference</summary><div id="reference"></div></details></section></main></div><div class="layout-preview" id="layout-preview"></div>
 <script>
 'use strict';
 const byId=id=>document.getElementById(id);
@@ -286,6 +348,42 @@ const old=read('kanaDesk1'),prefs=read('kanaDesk2');
 const referenceEnabled=byId('reference-enabled');
 referenceEnabled.checked=prefs.referenceEnabled===true;
 referenceEnabled.onchange=save;
+const trialTimerEnabled=byId('trial-timer-enabled');
+trialTimerEnabled.checked=prefs.trialTimerEnabled!==false;
+trialTimerEnabled.onchange=save;
+const comboSoundEnabled=byId('combo-sound-enabled');
+comboSoundEnabled.checked=prefs.comboSoundEnabled===true;
+comboSoundEnabled.onchange=save;
+byId('sound-settings').hidden=typeof AudioContext!=='function';
+const pronunciationEnabled=byId('pronunciation-enabled');
+const pronunciationStatus=byId('pronunciation-status');
+const speech=typeof SpeechSynthesisUtterance==='function'?window.speechSynthesis:null;
+let japaneseVoice=null;
+pronunciationEnabled.checked=prefs.pronunciationEnabled===true;
+pronunciationEnabled.onchange=()=>{
+ if(!pronunciationEnabled.checked)speech?.cancel();
+ save();
+};
+function updateJapaneseVoice(){
+ const voices=speech?.getVoices().filter(voice=>/^ja(?:[-_]|$)/i.test(voice.lang))??[];
+ japaneseVoice=voices.find(voice=>voice.localService)??voices[0]??null;
+ pronunciationEnabled.disabled=!japaneseVoice;
+ pronunciationStatus.hidden=Boolean(japaneseVoice);
+ pronunciationStatus.textContent=japaneseVoice?'':'A Japanese voice is unavailable in this browser. Enable a Japanese text-to-speech voice on your device to use pronunciation.';
+}
+speech?.addEventListener('voiceschanged',updateJapaneseVoice);
+updateJapaneseVoice();
+
+function pronounceCard(card){
+ if(!pronunciationEnabled.checked||!japaneseVoice)return;
+ const utterance=new SpeechSynthesisUtterance(displayCard(card));
+ utterance.voice=japaneseVoice;
+ utterance.lang=japaneseVoice.lang;
+ utterance.rate=.9;
+ speech.cancel();
+ speech.speak(utterance);
+}
+
 let script=scripts.includes(prefs.script)?prefs.script:old.mode==='Katakana'?'Katakana':'Hiragana';
 const selected=Object.fromEntries(scripts.map(s=>[s,new Set(prefs[s]??(Array.isArray(old.rows)?old.rows:groups.slice(0,10).map((_,i)=>i)))]));
 const selectedWords=Object.fromEntries(scripts.map(name=>[name,new Set(prefs.words?.[name]??[])]));
@@ -309,7 +407,7 @@ initialFont.checked=true;
 document.documentElement.dataset.font=initialFont.value;
 fontPicker.onchange=event=>{document.documentElement.dataset.font=event.target.value;save()};
 
-function save(){try{localStorage.setItem('kanaDesk2',JSON.stringify({script,words:Object.fromEntries(scripts.map(name=>[name,[...selectedWords[name]]])),referenceEnabled:referenceEnabled.checked,font:document.documentElement.dataset.font,theme:document.documentElement.dataset.theme,...Object.fromEntries(scripts.map(s=>[s,[...selected[s]]]))}))}catch{}}
+function save(){try{localStorage.setItem('kanaDesk2',JSON.stringify({script,words:Object.fromEntries(scripts.map(name=>[name,[...selectedWords[name]]])),referenceEnabled:referenceEnabled.checked,trialTimerEnabled:trialTimerEnabled.checked,comboSoundEnabled:comboSoundEnabled.checked,pronunciationEnabled:pronunciationEnabled.checked,font:document.documentElement.dataset.font,theme:document.documentElement.dataset.theme,...Object.fromEntries(scripts.map(s=>[s,[...selected[s]]]))}))}catch{}}
 function theme(value){document.documentElement.dataset.theme=value;const button=byId('theme');const label=value==='dark'?'Switch to light mode':'Switch to dark mode';button.setAttribute('aria-label',label);button.title=label}
 theme(prefs.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
 byId('theme').onclick=()=>{theme(document.documentElement.dataset.theme==='dark'?'light':'dark');save()};
@@ -483,6 +581,7 @@ function selectSetupTab(name){
  byId('panel').hidden=!scripts.includes(name);
  byId('kanji-panel').hidden=name!=='Kanji';
  byId('settings-panel').hidden=name!=='Settings';
+ byId('trial-offer').hidden=name!=='Hiragana';
 }
 setupTabs.forEach((name,index)=>{
  const tab=byId(name);
@@ -508,14 +607,159 @@ setupTabs.forEach((name,index)=>{
 
 const answer=byId('answer'),feedback=byId('feedback');
 let deck=[],bag=[],queue=[],current,correct,total,missed,revealed;
+const trialDeck=categoryIndices(0).flatMap(i=>groups[i].cards.map(([kana,reading])=>[kana,reading,'Hiragana']));
+const trialRecordKey='hibi-time-trial:'+JSON.stringify(trialDeck);
+const savedTrial=read(trialRecordKey).milliseconds;
+let trialBest=Number.isFinite(savedTrial)&&savedTrial>=0?savedTrial:null;
+let trial=null,clockInterval=null;
+
+function formatTime(milliseconds){
+ const tenths=Math.floor(milliseconds/100);
+ const seconds=String(Math.floor(tenths/10)%60).padStart(2,'0');
+ return Math.floor(tenths/600)+':'+seconds+'.'+tenths%10;
+}
+function updateTrialBest(){
+ byId('trial-best').textContent=trialBest===null?'':'· Best '+formatTime(trialBest);
+}
+function updateTrialProgress(){
+ byId('deck-size').textContent=trial.solved+' / '+deck.length+' cards';
+ byId('stats').textContent=trial.firstTry+' correct first try';
+}
+function finishTrial(){
+ const elapsed=performance.now()-trial.started;
+ clearInterval(clockInterval);
+ const record=trialBest===null||elapsed<trialBest;
+ if(record){
+  trialBest=elapsed;
+  try{localStorage.setItem(trialRecordKey,JSON.stringify({milliseconds:elapsed}));}catch{}
+ }
+ updateTrialBest();
+ byId('reading-card').hidden=true;
+ byId('trial-recap').hidden=false;
+ byId('trial-time').textContent=formatTime(elapsed);
+ byId('trial-result').textContent=record?'New personal best':'Personal best '+formatTime(trialBest);
+ byId('trial-accuracy').textContent=trial.firstTry+'/'+deck.length+' correct first try · '+trial.missed.size+' recovered';
+ byId('trial-finish').focus();
+}
 function message(text,error=false){feedback.textContent=text;feedback.className=error?'error':''}
 function next(){
- if(!bag.length)bag=deck.slice();
- let i=Math.floor(Math.random()*bag.length);if(bag.length>1&&bag[i]===current)i=(i+1)%bag.length;
- const due=queue.findIndex(q=>q.after<=total&&q.card!==current);
- current=due>=0?queue.splice(due,1)[0].card:bag.splice(i,1)[0];
+ if(trial){
+  current=bag.shift();
+ }else{
+  if(!bag.length)bag=deck.slice();
+  let i=Math.floor(Math.random()*bag.length);if(bag.length>1&&bag[i]===current)i=(i+1)%bag.length;
+  const due=queue.findIndex(q=>q.after<=total&&q.card!==current);
+  current=due>=0?queue.splice(due,1)[0].card:bag.splice(i,1)[0];
+ }
  byId('glyph').classList.toggle('word-prompt',Boolean(current[3]));
  byId('glyph').textContent=displayCard(current);answer.value='';answer.disabled=false;answer.setAttribute('aria-invalid','false');missed=revealed=false;byId('reveal').textContent='Show answer';answer.focus();
+}
+const comboMilestones=[5,10,20,30,40,50,60];
+const comboTarget=comboMilestones[comboMilestones.length-1];
+const comboMeter=byId('combo-meter');
+const comboProgress=byId('combo-progress');
+const comboBurst=byId('combo-burst');
+const promptBurst=byId('prompt-burst');
+let combo=0;
+let comboAudio=null;
+const comboChimes=[
+ [523.25,659.25],
+ [523.25,659.25,783.99],
+ [587.33,739.99,880],
+ [659.25,783.99,1046.50],
+ [659.25,783.99,1046.50,1174.66],
+ [783.99,987.77,1174.66,1567.98],
+ [783.99,987.77,1174.66,1567.98,2093.00]
+];
+
+function prepareComboAudio(){
+ if(!comboSoundEnabled.checked||typeof AudioContext!=='function')return;
+ try{
+  comboAudio??=new AudioContext();
+  if(comboAudio.state!=='running')comboAudio.resume().catch(()=>{});
+ }catch{}
+}
+function playComboChime(milestone){
+ if(!comboSoundEnabled.checked||comboAudio?.state!=='running')return;
+ const start=comboAudio.currentTime;
+ comboChimes[milestone].forEach((frequency,index)=>{
+  const at=start+index*.055;
+  const tone=comboAudio.createOscillator();
+  const envelope=comboAudio.createGain();
+  tone.type='sine';
+  tone.frequency.value=frequency;
+  envelope.gain.setValueAtTime(0,at);
+  envelope.gain.linearRampToValueAtTime(.04,at+.012);
+  envelope.gain.exponentialRampToValueAtTime(.001,at+.16);
+  tone.connect(envelope).connect(comboAudio.destination);
+  tone.start(at);
+  tone.stop(at+.17);
+ });
+}
+
+function updateCombo(value){
+ combo=value;
+ const fill=Math.min(combo,comboTarget);
+ byId('combo-count').textContent=combo;
+ comboProgress.setAttribute('aria-valuenow',fill);
+ comboProgress.setAttribute('aria-valuetext',combo+' correct in a row');
+ comboMeter.style.setProperty('--combo-fill',100*fill/comboTarget+'%');
+ comboMeter.dataset.tier=String(Math.floor(fill/10));
+ const milestone=byId('combo-milestone');
+ const reachedMilestone=comboMilestones.includes(combo);
+ if(combo===0){
+  milestone.textContent='';
+  comboBurst.replaceChildren();
+  promptBurst.replaceChildren();
+ }
+ if(reachedMilestone){
+  milestone.textContent=combo+'-combo milestone';
+  const intensity=comboMilestones.indexOf(combo);
+  playComboChime(intensity);
+  const sparkCount=6+intensity*2;
+  comboBurst.style.setProperty('--burst-duration',420+intensity*65+'ms');
+  comboBurst.style.setProperty('--spark-travel',16+intensity*5+'px');
+  const sparks=Array.from({length:sparkCount},(_,index)=>{
+   const spark=document.createElement('span');
+   spark.className='combo-spark';
+   spark.style.setProperty('--angle',index*360/sparkCount+'deg');
+   return spark;
+  });
+  comboBurst.replaceChildren(...sparks);
+  const laneCount=5+intensity*4;
+  const waveCount=combo>=50?3:combo>=30?2:1;
+  promptBurst.dataset.bright=String(combo>=30);
+  promptBurst.dataset.finale=String(combo>=50);
+  promptBurst.style.setProperty('--burst-duration',480+intensity*100+'ms');
+  const lanes=Array.from({length:2},(_,side)=>{
+   const lane=document.createElement('div');
+   lane.className='prompt-spark-lane';
+   for(let index=0;index<laneCount;index++){
+    const spark=document.createElement('span');
+    spark.className='prompt-spark';
+    const origin=17+(index*11)%25;
+    const direction=side===0?-1:1;
+    const rise=(2*index/(laneCount-1)-1)*(28+intensity*7);
+    spark.style.setProperty('--spark-origin',(side===0?100-origin:origin)+'%');
+    spark.style.setProperty('--spark-x',direction*(3+(index*7)%13)+'px');
+    spark.style.setProperty('--spark-y',rise+'px');
+    spark.style.setProperty('--spark-spin',direction*(75+(index%5)*34)+'deg');
+    spark.style.setProperty('--spark-size',(5+intensity+index%4+(index%5===0?intensity:0))+'px');
+    spark.style.setProperty('--spark-delay',(index%waveCount)*175+(index%3)*19+'ms');
+    lane.append(spark);
+   }
+   return lane;
+  });
+  promptBurst.replaceChildren(...lanes);
+ }
+}
+function showCorrectReading(){
+ const mark=document.createElement('span');
+ mark.className='correct-mark';
+ mark.setAttribute('aria-hidden','true');
+ mark.textContent='✓';
+ feedback.className='success';
+ feedback.replaceChildren(mark,'Correct · '+displayCard(current)+' = '+current[1]);
 }
 function score(){total++;if(!missed)correct++;else{queue=queue.filter(q=>q.card!==current);queue.push({card:current,after:total+2})}byId('stats').textContent=correct+' / '+total+' first try'}
 function readings([base,r,,word]){
@@ -527,9 +771,28 @@ answerForm.onsubmit=event=>{
  event.preventDefault();
  const value=answer.value.trim().toLowerCase();
  if(revealed||!value)return;
- if(readings(current).includes(value)){
-  message('Correct · '+displayCard(current)+' = '+current[1]);score();next();return;
+ const matches=readings(current).includes(value);
+ if(matches)pronounceCard(current);
+ if(trial){
+  if(matches){
+   trial.solved++;
+   if(!trial.missed.has(current))trial.firstTry++;
+   updateTrialProgress();
+   if(trial.solved===deck.length){finishTrial();return;}
+   message('Correct · '+displayCard(current)+' = '+current[1]);
+  }else{
+   trial.missed.add(current);
+   bag.push(current);
+   message('Review later · '+displayCard(current)+' = '+current[1],true);
+  }
+  next();
+  return;
  }
+ if(matches){
+  if(!missed)updateCombo(combo+1);
+  showCorrectReading();score();next();return;
+ }
+ updateCombo(0);
  missed=true;answer.setAttribute('aria-invalid','true');
  message('Try again or show the answer.',true);answer.focus();answer.select();
 };
@@ -539,7 +802,7 @@ answer.onkeydown=event=>{
 answer.oninput=()=>{
  if(answer.getAttribute('aria-invalid')==='true'){answer.setAttribute('aria-invalid','false');message('')}
 };
-byId('reveal').onclick=()=>{if(revealed){message('');next();return}missed=true;score();revealed=true;message(displayCard(current)+' = '+current[1]);answer.disabled=true;byId('reveal').textContent='Next kana';byId('reveal').focus()};
+byId('reveal').onclick=()=>{if(revealed){message('');next();return}updateCombo(0);missed=true;score();revealed=true;message(displayCard(current)+' = '+current[1]);answer.disabled=true;byId('reveal').textContent='Next kana';byId('reveal').focus()};
 function referenceGroup(label){
  const section=document.createElement('details'), heading=document.createElement('summary');
  heading.textContent=label;
@@ -594,13 +857,55 @@ byId('start').onclick=()=>{
   ))
  ]);
  if(!deck.length)return;
+ openDrill();
+};
+function openDrill(timed=false){
+ if(!timed)prepareComboAudio();
+ clearInterval(clockInterval);
+ trial=timed?{solved:0,firstTry:0,missed:new Set(),started:0}:null;
+ byId('reading-card').hidden=false;
+ byId('reading-card').classList.toggle('reading-practice',!timed);
+ comboMeter.hidden=timed;
+ updateCombo(0);
+ byId('trial-recap').hidden=true;
+ byId('reveal').hidden=timed;
+ byId('drill-title').textContent=timed?'Time Trial':'Reading practice';
+ const clock=byId('trial-clock');
+ clock.hidden=!timed||!trialTimerEnabled.checked;
+ clock.textContent='0:00.0';
  bag=[];queue=[];current=null;correct=total=0;byId('stats').textContent='0 / 0 first try';message('');
  byId('deck-size').textContent=deck.length+(deck.length===1?' card':' cards');
  byId('chart').querySelector('summary').textContent=deck.some(card=>card[3])?'Reading reference':'Kana reference';
  renderReference();
+ if(timed){
+  byId('chart').hidden=true;
+  bag=deck.slice();
+  for(let i=bag.length-1;i>0;i--){
+   const j=Math.floor(Math.random()*(i+1));
+   [bag[i],bag[j]]=[bag[j],bag[i]];
+  }
+  updateTrialProgress();
+ }
  document.body.classList.add('practicing');byId('setup').hidden=true;byId('drill').hidden=false;window.scrollTo(0,0);next();
-};
+ if(timed){
+  trial.started=performance.now();
+  if(!clock.hidden)clockInterval=setInterval(()=>{
+   clock.textContent=formatTime(performance.now()-trial.started);
+  },100);
+ }
+}
+function startTrial(){
+ deck=trialDeck;
+ openDrill(true);
+}
+byId('trial-start').onclick=startTrial;
+byId('trial-retry').onclick=startTrial;
+byId('trial-back').onclick=showSetup;
+updateTrialBest();
 function showSetup(){
+ if(pronunciationEnabled.checked)speech?.cancel();
+ clearInterval(clockInterval);
+ trial=null;
  document.body.classList.remove('practicing');
  byId('drill').hidden=true;
  byId('setup').hidden=false;
