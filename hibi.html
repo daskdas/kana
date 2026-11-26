@@ -289,7 +289,7 @@ html{scrollbar-gutter:stable}
 </svg></button><button id="theme" type="button" aria-label="Switch to dark mode"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.7 14.4A9.1 9.1 0 0 1 9.6 3.3a.7.7 0 0 0-.9-.8A10 10 0 1 0 21.5 15.3a.7.7 0 0 0-.8-.9Z"/></svg><svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button></header>
 <main><section id="setup"><div role="tablist" aria-label="Practice setup" class="script-tabs"><button role="tab" id="Hiragana" aria-controls="panel">Hiragana</button><button role="tab" id="Katakana" aria-controls="panel">Katakana</button><button type="button" role="tab" id="Kanji" aria-controls="kanji-panel">Kanji</button><button type="button" role="tab" id="Settings" aria-controls="settings-panel">Settings</button></div><div id="panel" role="tabpanel"><div class="script-intro"><span id="script-icon" lang="ja" aria-hidden="true"></span><div><h1 id="script-title" class="setup-title"></h1><p>Choose characters and words to practise.</p></div></div><div class="session-bar"><div><strong>Your practice</strong><p id="session-mix"></p></div><button class="primary" id="start"><span id="practice-label">Practice</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M3 1.5 10.5 6 3 10.5Z"/></svg></button></div><section id="trial-offer" aria-labelledby="trial-title"><div><h2 id="trial-title">Time Trial</h2><p>Basic Hiragana · 46 cards <span id="trial-best"></span></p></div><button id="trial-start" type="button">Start Time Trial</button></section><div class="selection-scope"><strong id="count" role="status"></strong><button id="bulk-script" type="button"></button></div><section aria-labelledby="characters-title"><h2 id="characters-title">Characters</h2><div id="category-cards"></div></section><section aria-labelledby="words-title"><h2 id="words-title">Words</h2><div id="word-cards"></div></section></div><div id="kanji-panel" role="tabpanel" aria-labelledby="Kanji" hidden><div class="script-intro"><span class="kanji-icon" lang="ja" aria-hidden="true">漢</span><div><h1 class="setup-title">Kanji</h1><p>Practise reading kanji.</p></div></div></div><div id="settings-panel" role="tabpanel" aria-labelledby="Settings" hidden><div class="script-intro"><span class="settings-icon" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h6m4 0h6M4 12h11m4 0h1M4 18h2m4 0h10M10 3v6m9 0v6M6 15v6"/></svg></span><div><h1 class="setup-title">Settings</h1><p>Adjust how you practise.</p></div></div><fieldset class="font-options" id="kana-font" aria-describedby="font-description"><legend>Kana font</legend><p class="setting-description" id="font-description">Choose how kana look in the selection cards and practice prompts.</p><div class="font-cards"><label class="font-card" data-preview="gothic"><input type="radio" name="kana-font" value="gothic"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Gothic</strong><small>Screen</small></label><label class="font-card" data-preview="textbook"><input type="radio" name="kana-font" value="textbook"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Kyōkasho</strong><small>Textbook</small></label><label class="font-card" data-preview="mincho"><input type="radio" name="kana-font" value="mincho"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Minchō</strong><small>Print</small></label></div></fieldset><fieldset class="font-options" aria-describedby="reference-description"><legend>Kana reference</legend><p class="setting-description" id="reference-description">Look up readings for your selected kana during a drill, grouped by script and category.</p><label class="reference-option"><input id="reference-enabled" type="checkbox">Show kana reference during practice</label></fieldset><fieldset class="font-options" aria-describedby="timer-description"><legend>Time Trial</legend><p class="setting-description" id="timer-description">Your finish time always appears in the recap.</p><label class="reference-option"><input id="trial-timer-enabled" type="checkbox">Show the live timer</label></fieldset><fieldset class="font-options" id="sound-settings" aria-describedby="sound-description"><legend>Sound</legend><p class="setting-description" id="sound-description">Play a short chime when you reach a combo milestone in regular practice.</p><label class="reference-option"><input id="combo-sound-enabled" type="checkbox">Play combo sounds</label></fieldset><fieldset class="font-options" aria-describedby="pronunciation-description"><legend>Pronunciation</legend><p class="setting-description" id="pronunciation-description">Hear the Japanese pronunciation after a correct answer.</p><label class="reference-option"><input id="pronunciation-enabled" type="checkbox">Read correct answers aloud</label><p class="setting-description" id="pronunciation-status" role="status" hidden></p></fieldset></div></section>
 <section id="drill" hidden><h1 id="drill-title">Reading practice</h1><article id="reading-card"><div class="bar"><button id="back" type="button"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m7-7-7 7 7 7"/></svg>Back</button><div class="drill-meta"><span id="deck-size"></span><span id="trial-clock" aria-label="Elapsed time" hidden></span></div></div><div id="combo-meter" hidden><div class="combo-copy"><span><span id="combo-label">Combo</span> <strong id="combo-count">0</strong></span><span id="combo-milestone" role="status"></span></div><div class="combo-track"><div id="combo-progress" role="progressbar" aria-labelledby="combo-label" aria-valuemin="0" aria-valuemax="60" aria-valuenow="0"><div class="combo-fill"></div></div><div id="combo-burst" aria-hidden="true"></div></div></div><div class="prompt-stage"><div class="prompt-center"><div id="glyph" class="stage" lang="ja"></div><div id="prompt-burst" aria-hidden="true"></div></div></div><label for="answer">Reading in rōmaji</label><form id="answer-form"><input id="answer" class="input" placeholder="Type the reading" autocorrect="off" enterkeyhint="done" autocomplete="off" autocapitalize="none" spellcheck="false"><button type="submit" class="primary">Check</button></form><p id="feedback" role="status"></p><div class="bar"><button id="reveal">Show answer</button><span id="stats"></span></div></article><article id="trial-recap" hidden><p class="trial-caption">Time Trial · Basic Hiragana</p><h2 id="trial-finish" tabindex="-1">Round complete</h2><p id="trial-time"></p><p id="trial-result"></p><p id="trial-accuracy"></p><div class="bar"><button class="primary" id="trial-retry" type="button">Beat your best</button><button id="trial-back" type="button">Back to setup</button></div></article><details id="chart"><summary>Kana reference</summary><div id="reference"></div></details></section></main></div><div class="layout-preview" id="layout-preview"></div>
-<script>
+<script id="basic-kana-audio" type="application/json">{}</script><script>
 'use strict';
 const byId=id=>document.getElementById(id);
 const groups=[
@@ -355,32 +355,51 @@ const comboSoundEnabled=byId('combo-sound-enabled');
 comboSoundEnabled.checked=prefs.comboSoundEnabled===true;
 comboSoundEnabled.onchange=save;
 byId('sound-settings').hidden=typeof AudioContext!=='function';
+const basicKanaAudio=JSON.parse(byId('basic-kana-audio').textContent);
+const savedPronunciations=Object.keys(basicKanaAudio).length>0;
+const pronunciationAudio=savedPronunciations?new Audio():null;
 const pronunciationEnabled=byId('pronunciation-enabled');
 const pronunciationStatus=byId('pronunciation-status');
 const speech=typeof SpeechSynthesisUtterance==='function'?window.speechSynthesis:null;
 let japaneseVoice=null;
 pronunciationEnabled.checked=prefs.pronunciationEnabled===true;
 pronunciationEnabled.onchange=()=>{
- if(!pronunciationEnabled.checked)speech?.cancel();
+ if(!pronunciationEnabled.checked)stopPronunciation();
  save();
 };
 function updateJapaneseVoice(){
  const voices=speech?.getVoices().filter(voice=>/^ja(?:[-_]|$)/i.test(voice.lang))??[];
  japaneseVoice=voices.find(voice=>voice.localService)??voices[0]??null;
- pronunciationEnabled.disabled=!japaneseVoice;
- pronunciationStatus.hidden=Boolean(japaneseVoice);
+ pronunciationEnabled.disabled=!savedPronunciations&&!japaneseVoice;
+ pronunciationStatus.hidden=Boolean(japaneseVoice)||savedPronunciations;
  pronunciationStatus.textContent=japaneseVoice?'':'A Japanese voice is unavailable in this browser. Enable a Japanese text-to-speech voice on your device to use pronunciation.';
 }
 speech?.addEventListener('voiceschanged',updateJapaneseVoice);
 updateJapaneseVoice();
+if(savedPronunciations){
+ byId('pronunciation-description').textContent='Basic kana use saved AI-generated Japanese audio. Other prompts use a Japanese browser voice if available.';
+}
 
+function stopPronunciation(){
+ pronunciationAudio?.pause();
+ speech?.cancel();
+}
 function pronounceCard(card){
- if(!pronunciationEnabled.checked||!japaneseVoice)return;
+ if(!pronunciationEnabled.checked)return;
+ const [kana,,,word]=card;
+ const clip=word?null:basicKanaAudio[kana];
+ if(clip){
+  stopPronunciation();
+  pronunciationAudio.src=clip;
+  pronunciationAudio.play().catch(()=>{});
+  return;
+ }
+ if(!japaneseVoice)return;
  const utterance=new SpeechSynthesisUtterance(displayCard(card));
  utterance.voice=japaneseVoice;
  utterance.lang=japaneseVoice.lang;
  utterance.rate=.9;
- speech.cancel();
+ stopPronunciation();
  speech.speak(utterance);
 }
 
@@ -903,7 +922,7 @@ byId('trial-retry').onclick=startTrial;
 byId('trial-back').onclick=showSetup;
 updateTrialBest();
 function showSetup(){
- if(pronunciationEnabled.checked)speech?.cancel();
+ if(pronunciationEnabled.checked)stopPronunciation();
  clearInterval(clockInterval);
  trial=null;
  document.body.classList.remove('practicing');
