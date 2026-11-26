@@ -4,7 +4,7 @@
 <style>
 :root{color-scheme:light;--bg:#f1f0ec;--panel:#fffefa;--ink:#252525;--muted:#555555;--line:#c2c0ba;--accent:#333333;--inverse:#ffffff;--tint:#e5e3dd;--error:#a03928}
 :root[data-theme=dark]{color-scheme:dark;--bg:#1b1b1b;--panel:#292929;--ink:#f4f2ed;--muted:#c7c3bd;--line:#595959;--accent:#eeeae0;--inverse:#202020;--tint:#3b3a38;--error:#ffab98}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif}main,header{width:min(920px,92%);margin:auto}header,.bar{display:flex;align-items:center;justify-content:space-between;gap:12px}header{padding:18px 0;font-weight:750}.seal{background:#a53d2d;color:white;border-radius:6px;padding:4px 8px;margin-right:8px}h1{font:normal clamp(40px,7vw,68px)/1.1 Georgia,serif;letter-spacing:-.05em;margin:28px 0 18px}button,input{font:inherit}button{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer}button:disabled{opacity:.5;cursor:default}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.primary,[role=tab][aria-selected=true]{background:var(--accent);color:var(--inverse);border-color:var(--accent)}[role=tablist]{display:flex;gap:6px;margin-bottom:18px}.bar{flex-wrap:wrap}.rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:7px}.row{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px;cursor:pointer}.row:has(:checked){background:var(--tint)}input[type=checkbox]{accent-color:var(--accent);width:17px;height:17px}.row small{display:block;color:var(--muted);font:12px system-ui}.row span{letter-spacing:.08em}h2{font:normal 23px Georgia,serif;margin:20px 0 9px}.actions{position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:12px 0;margin-top:18px}article{max-width:560px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin:18px auto}.stage{text-align:center;font:clamp(82px,18vw,148px)/1.5 serif}.input{display:block;width:100%;margin:6px 0;padding:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:7px}.input[aria-invalid=true]{border:2px solid var(--error)}#feedback{min-height:1.6em;color:var(--accent)}#feedback.error{color:var(--error)}details{margin:12px 0 24px}summary{cursor:pointer}.entry{display:inline-block;margin:3px 12px 3px 0}main{padding-bottom:22px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif}main,header{width:min(920px,92%);margin:auto}header,.bar{display:flex;align-items:center;justify-content:space-between;gap:12px}header{padding:18px 0;font-weight:750}.seal{background:#a53d2d;color:white;border-radius:6px;padding:4px 8px;margin-right:8px}h1{font:normal clamp(40px,7vw,68px)/1.1 Georgia,serif;letter-spacing:-.05em;margin:28px 0 18px}button,input{font:inherit}button{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer}button:disabled{opacity:.5;cursor:default}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.primary,[role=tab][aria-selected=true]{background:var(--accent);color:var(--inverse);border-color:var(--accent)}[role=tablist]{display:flex;gap:6px;margin-bottom:18px}.bar{flex-wrap:wrap}.rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:7px}.row{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px;cursor:pointer}.row:has(:checked){background:var(--bulk-hover);border-color:var(--practice-ink)}input[type=checkbox]{accent-color:var(--accent);width:17px;height:17px}.row small{display:block;color:var(--muted);font:12px system-ui}.row span{letter-spacing:.08em}h2{font:normal 23px Georgia,serif;margin:20px 0 9px}.actions{position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:12px 0;margin-top:18px}article{max-width:560px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;margin:18px auto}.stage{text-align:center;font:clamp(82px,18vw,148px)/1.5 serif}.input{display:block;width:100%;margin:6px 0;padding:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:7px}.input[aria-invalid=true]{border:2px solid var(--error)}#feedback{min-height:1.6em;color:var(--accent)}#feedback.error{color:var(--error)}details{margin:12px 0 24px}summary{cursor:pointer}.entry{display:inline-block;margin:3px 12px 3px 0}main{padding-bottom:22px}
 
 button,summary{min-height:44px;touch-action:manipulation}
 summary{padding:10px 0}
@@ -25,7 +25,7 @@ summary{padding:10px 0}
  #setup{padding-bottom:calc(74px + env(safe-area-inset-bottom))}
  .actions{position:fixed;left:0;right:0;bottom:0;padding:8px max(12px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));margin:0}
  .actions .primary{min-width:45%}
- body.practicing header,body.practicing #drill h1{display:none}
+ body.practicing #drill h1{display:none}
  #drill{padding-top:max(6px,env(safe-area-inset-top))}
  #drill article{padding:10px 12px;margin:0 auto}
  .stage{font-size:clamp(52px,calc(var(--visible-height,100dvh) * .17),106px);line-height:1.15;padding:6px 0}
@@ -35,7 +35,7 @@ summary{padding:10px 0}
 }
 @media(max-width:350px){.row span{font-size:14px}}
 @media(max-height:460px) and (orientation:landscape){
- body.practicing header,#drill h1{display:none}
+ #drill h1{display:none}
  #drill article{margin:2px auto;padding:6px 12px}
  .stage{font-size:50px;line-height:1}
  #feedback{margin:3px 0}
@@ -69,9 +69,9 @@ summary{padding:10px 0}
 .script-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:12px 0 16px;border-bottom:1px solid var(--line)}
 .script-tabs [role=tab]{background:transparent;color:var(--muted);border:0;border-bottom:3px solid transparent;border-radius:0;margin-bottom:-1px}
 .script-tabs [role=tab][aria-selected=true]{background:transparent;color:var(--ink);border-bottom-color:var(--accent);font-weight:750}
-.script-intro{display:flex;align-items:center;gap:12px;margin:0 0 14px}
-#script-icon{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:8px;background:#a53d2d;color:#fff;font:600 27px var(--kana-font)}
-#script-title{font-size:clamp(29px,5vw,40px);margin:0}
+.script-intro{display:flex;align-items:center;gap:12px;margin:0 0 26px}
+#script-icon,.settings-icon,.kanji-icon{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:8px;background:#a53d2d;color:#fff;font:600 27px var(--kana-font)}
+.setup-title{font-size:clamp(29px,5vw,40px);margin:0}
 .script-intro p{margin:2px 0 0;color:var(--muted);font-size:14px}
 
 
@@ -92,8 +92,8 @@ summary{padding:10px 0}
 
 #setup{padding-bottom:0}
 .practice-action{display:grid;gap:5px;margin:0 0 16px}
-#start{background:#a53d2d;border-color:#a53d2d;color:#fff;font-size:20px;font-weight:850;min-height:54px}
-:root[data-theme=dark] #start{background:#f0a38e;border-color:#f0a38e;color:#331b16}
+#start{background:var(--practice-fill);border-color:var(--practice-fill);color:#fff;font-size:20px;font-weight:850;min-height:54px}
+:root[data-theme=dark] #start{background:var(--practice-fill);border-color:var(--practice-fill);color:var(--ink)}
 #count{text-align:center;color:var(--muted);font-size:13px;grid-row:2}
 
 
@@ -106,20 +106,22 @@ summary{padding:10px 0}
 }
 
 html{min-height:100%}
-body{min-height:100vh;padding:clamp(8px,3vw,36px);background-color:#e9dfc9;
- background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20960%22%3E%0A%20%3Cdefs%3E%0A%20%3CradialGradient%20id%3D%22paper%22%20cx%3D%22.44%22%20cy%3D%22.36%22%20r%3D%22.8%22%3E%3Cstop%20stop-color%3D%22%23e9dfc9%22%2F%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%23e9dfc9%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23a48a63%22%2F%3E%3C%2FradialGradient%3E%0A%20%3Cfilter%20id%3D%22edge%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22140%25%22%3E%3CfeTurbulence%20baseFrequency%3D%22.034%20.075%22%20numOctaves%3D%223%22%20seed%3D%2223%22%20result%3D%22rough%22%2F%3E%3CfeDisplacementMap%20in%3D%22SourceGraphic%22%20in2%3D%22rough%22%20scale%3D%2220%22%2F%3E%3C%2Ffilter%3E%0A%20%3Cfilter%20id%3D%22grain%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.52%20.78%22%20numOctaves%3D%223%22%20seed%3D%2211%22%20stitchTiles%3D%22stitchTiles%22%2F%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%2F%3E%3C%2Ffilter%3E%0A%20%3C%2Fdefs%3E%0A%20%3Cpath%20fill%3D%22url%28%23paper%29%22%20d%3D%22M0%200h1440v960H0z%22%2F%3E%0A%20%3Cg%20filter%3D%22url%28%23edge%29%22%3E%0A%20%3Cpath%20fill%3D%22%23565b4e%22%20opacity%3D%22.13%22%20d%3D%22M-85%20711C96%20696%20155%20480%20334%20484c-70%2079-103%20153-151%20254S31%20920-85%20923ZM1510%20528c-99%204-129%20111-231%20165-53%2029-108%2044-182%2055%20132%2065%20280%207%20413-62Z%22%2F%3E%0A%20%3Cpath%20fill%3D%22%23565b4e%22%20opacity%3D%22.16%22%20d%3D%22M-82%20843c151%2027%20243-80%20342-172-43%20101-135%20213-342%20293zm1550-102c-57-52-100%2049-189%2078-48%2016-87%2028-180%2027%20110%2038%20272%207%20369-53z%22%2F%3E%0A%20%3Cpath%20d%3D%22M1077%2091c109-51%20225-29%20319%2049M1119%20112c79-30%20167-12%20229%2015M-45%20593c93-12%20141-55%20196-117%22%20fill%3D%22none%22%20stroke%3D%22%23a48a63%22%20stroke-width%3D%224%22%20opacity%3D%22.40%22%2F%3E%0A%20%3Ccircle%20cx%3D%221298%22%20cy%3D%22200%22%20r%3D%2277%22%20fill%3D%22%23a83e2d%22%20opacity%3D%22.71%22%2F%3E%0A%20%3Cpath%20d%3D%22M1228%20229c56-36%20119-55%20197-53m-221%2074c58-20%2091-31%20145-30%22%20fill%3D%22none%22%20stroke%3D%22%23e9dfc9%22%20stroke-width%3D%226%22%20opacity%3D%22.38%22%2F%3E%0A%20%3Cpath%20d%3D%22M1214%20163c32-60%20106-76%20156-39m-168%2052c-14%2056%209%20110%2064%20130%22%20fill%3D%22none%22%20stroke%3D%22%23a83e2d%22%20stroke-width%3D%223%22%20opacity%3D%22.38%22%2F%3E%0A%20%3C%2Fg%3E%0A%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%23565b4e%22%20opacity%3D%22.13%22%20stroke-width%3D%221.35%22%3E%0A%20%3Cpath%20d%3D%22M-60%20280c179-3%20215-108%20300-143%2043-18%2092-25%20160-20M-55%20299c127%200%20183-53%20238-102%2057-51%20119-66%20213-64M-49%20320c104-7%20182-51%20236-106%2055-50%20116-62%20172-65M-57%20340c107-14%20185-51%20232-96%22%2F%3E%0A%20%3Cpath%20d%3D%22M1455%20536c-83-21-107%2037-173%2055-94%2026-136-24-224%2011m404-46c-85-24-109%2030-174%2049-95%2028-131-17-214%208m389-38c-66-16-109%2023-153%2044-69%2033-118%209-162%204%22%2F%3E%0A%20%3C%2Fg%3E%0A%20%3Crect%20width%3D%221440%22%20height%3D%22960%22%20opacity%3D%22.16%22%20filter%3D%22url%28%23grain%29%22%20style%3D%22mix-blend-mode%3Amultiply%22%2F%3E%0A%20%3C%2Fsvg%3E");
- background-size:cover;background-repeat:no-repeat;background-position:center top}
-:root[data-theme=dark] body{background-color:#312c27;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20960%22%3E%0A%20%3Cdefs%3E%0A%20%3CradialGradient%20id%3D%22paper%22%20cx%3D%22.44%22%20cy%3D%22.36%22%20r%3D%22.8%22%3E%3Cstop%20stop-color%3D%22%23312c27%22%2F%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%23312c27%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23736252%22%2F%3E%3C%2FradialGradient%3E%0A%20%3Cfilter%20id%3D%22edge%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22140%25%22%3E%3CfeTurbulence%20baseFrequency%3D%22.034%20.075%22%20numOctaves%3D%223%22%20seed%3D%2223%22%20result%3D%22rough%22%2F%3E%3CfeDisplacementMap%20in%3D%22SourceGraphic%22%20in2%3D%22rough%22%20scale%3D%2220%22%2F%3E%3C%2Ffilter%3E%0A%20%3Cfilter%20id%3D%22grain%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.52%20.78%22%20numOctaves%3D%223%22%20seed%3D%2211%22%20stitchTiles%3D%22stitchTiles%22%2F%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%2F%3E%3C%2Ffilter%3E%0A%20%3C%2Fdefs%3E%0A%20%3Cpath%20fill%3D%22url%28%23paper%29%22%20d%3D%22M0%200h1440v960H0z%22%2F%3E%0A%20%3Cg%20filter%3D%22url%28%23edge%29%22%3E%0A%20%3Cpath%20fill%3D%22%239b9384%22%20opacity%3D%22.13%22%20d%3D%22M-85%20711C96%20696%20155%20480%20334%20484c-70%2079-103%20153-151%20254S31%20920-85%20923ZM1510%20528c-99%204-129%20111-231%20165-53%2029-108%2044-182%2055%20132%2065%20280%207%20413-62Z%22%2F%3E%0A%20%3Cpath%20fill%3D%22%239b9384%22%20opacity%3D%22.16%22%20d%3D%22M-82%20843c151%2027%20243-80%20342-172-43%20101-135%20213-342%20293zm1550-102c-57-52-100%2049-189%2078-48%2016-87%2028-180%2027%20110%2038%20272%207%20369-53z%22%2F%3E%0A%20%3Cpath%20d%3D%22M1077%2091c109-51%20225-29%20319%2049M1119%20112c79-30%20167-12%20229%2015M-45%20593c93-12%20141-55%20196-117%22%20fill%3D%22none%22%20stroke%3D%22%23736252%22%20stroke-width%3D%224%22%20opacity%3D%22.40%22%2F%3E%0A%20%3Ccircle%20cx%3D%221298%22%20cy%3D%22200%22%20r%3D%2277%22%20fill%3D%22%23c3614b%22%20opacity%3D%22.71%22%2F%3E%0A%20%3Cpath%20d%3D%22M1228%20229c56-36%20119-55%20197-53m-221%2074c58-20%2091-31%20145-30%22%20fill%3D%22none%22%20stroke%3D%22%23312c27%22%20stroke-width%3D%226%22%20opacity%3D%22.38%22%2F%3E%0A%20%3Cpath%20d%3D%22M1214%20163c32-60%20106-76%20156-39m-168%2052c-14%2056%209%20110%2064%20130%22%20fill%3D%22none%22%20stroke%3D%22%23c3614b%22%20stroke-width%3D%223%22%20opacity%3D%22.38%22%2F%3E%0A%20%3C%2Fg%3E%0A%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%239b9384%22%20opacity%3D%22.13%22%20stroke-width%3D%221.35%22%3E%0A%20%3Cpath%20d%3D%22M-60%20280c179-3%20215-108%20300-143%2043-18%2092-25%20160-20M-55%20299c127%200%20183-53%20238-102%2057-51%20119-66%20213-64M-49%20320c104-7%20182-51%20236-106%2055-50%20116-62%20172-65M-57%20340c107-14%20185-51%20232-96%22%2F%3E%0A%20%3Cpath%20d%3D%22M1455%20536c-83-21-107%2037-173%2055-94%2026-136-24-224%2011m404-46c-85-24-109%2030-174%2049-95%2028-131-17-214%208m389-38c-66-16-109%2023-153%2044-69%2033-118%209-162%204%22%2F%3E%0A%20%3C%2Fg%3E%0A%20%3Crect%20width%3D%221440%22%20height%3D%22960%22%20opacity%3D%22.16%22%20filter%3D%22url%28%23grain%29%22%20style%3D%22mix-blend-mode%3Amultiply%22%2F%3E%0A%20%3C%2Fsvg%3E")}
+body{isolation:isolate;min-height:100vh;padding:clamp(8px,3vw,36px);background-color:#e9dfc9;
+ --page-art:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20960%22%3E%0A%20%3Cdefs%3E%0A%20%3CradialGradient%20id%3D%22paper%22%20cx%3D%22.44%22%20cy%3D%22.36%22%20r%3D%22.8%22%3E%3Cstop%20stop-color%3D%22%23e9dfc9%22%2F%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%23e9dfc9%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23a48a63%22%2F%3E%3C%2FradialGradient%3E%0A%20%3Cfilter%20id%3D%22edge%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22140%25%22%3E%3CfeTurbulence%20baseFrequency%3D%22.034%20.075%22%20numOctaves%3D%223%22%20seed%3D%2223%22%20result%3D%22rough%22%2F%3E%3CfeDisplacementMap%20in%3D%22SourceGraphic%22%20in2%3D%22rough%22%20scale%3D%2220%22%2F%3E%3C%2Ffilter%3E%0A%20%3Cfilter%20id%3D%22grain%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.52%20.78%22%20numOctaves%3D%223%22%20seed%3D%2211%22%20stitchTiles%3D%22stitchTiles%22%2F%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%2F%3E%3C%2Ffilter%3E%0A%20%3C%2Fdefs%3E%0A%20%3Cpath%20fill%3D%22url%28%23paper%29%22%20d%3D%22M0%200h1440v960H0z%22%2F%3E%0A%20%3Cg%20filter%3D%22url%28%23edge%29%22%3E%0A%20%3Cpath%20fill%3D%22%23565b4e%22%20opacity%3D%22.13%22%20d%3D%22M-85%20711C96%20696%20155%20480%20334%20484c-70%2079-103%20153-151%20254S31%20920-85%20923ZM1510%20528c-99%204-129%20111-231%20165-53%2029-108%2044-182%2055%20132%2065%20280%207%20413-62Z%22%2F%3E%0A%20%3Cpath%20fill%3D%22%23565b4e%22%20opacity%3D%22.16%22%20d%3D%22M-82%20843c151%2027%20243-80%20342-172-43%20101-135%20213-342%20293zm1550-102c-57-52-100%2049-189%2078-48%2016-87%2028-180%2027%20110%2038%20272%207%20369-53z%22%2F%3E%0A%20%3Cpath%20d%3D%22M1077%2091c109-51%20225-29%20319%2049M1119%20112c79-30%20167-12%20229%2015M-45%20593c93-12%20141-55%20196-117%22%20fill%3D%22none%22%20stroke%3D%22%23a48a63%22%20stroke-width%3D%224%22%20opacity%3D%22.40%22%2F%3E%0A%20%3Ccircle%20cx%3D%221298%22%20cy%3D%22200%22%20r%3D%2277%22%20fill%3D%22%23a83e2d%22%20opacity%3D%22.71%22%2F%3E%0A%20%3Cpath%20d%3D%22M1228%20229c56-36%20119-55%20197-53m-221%2074c58-20%2091-31%20145-30%22%20fill%3D%22none%22%20stroke%3D%22%23e9dfc9%22%20stroke-width%3D%226%22%20opacity%3D%22.38%22%2F%3E%0A%20%3Cpath%20d%3D%22M1214%20163c32-60%20106-76%20156-39m-168%2052c-14%2056%209%20110%2064%20130%22%20fill%3D%22none%22%20stroke%3D%22%23a83e2d%22%20stroke-width%3D%223%22%20opacity%3D%22.38%22%2F%3E%0A%20%3C%2Fg%3E%0A%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%23565b4e%22%20opacity%3D%22.13%22%20stroke-width%3D%221.35%22%3E%0A%20%3Cpath%20d%3D%22M-60%20280c179-3%20215-108%20300-143%2043-18%2092-25%20160-20M-55%20299c127%200%20183-53%20238-102%2057-51%20119-66%20213-64M-49%20320c104-7%20182-51%20236-106%2055-50%20116-62%20172-65M-57%20340c107-14%20185-51%20232-96%22%2F%3E%0A%20%3Cpath%20d%3D%22M1455%20536c-83-21-107%2037-173%2055-94%2026-136-24-224%2011m404-46c-85-24-109%2030-174%2049-95%2028-131-17-214%208m389-38c-66-16-109%2023-153%2044-69%2033-118%209-162%204%22%2F%3E%0A%20%3C%2Fg%3E%0A%20%3Crect%20width%3D%221440%22%20height%3D%22960%22%20opacity%3D%22.16%22%20filter%3D%22url%28%23grain%29%22%20style%3D%22mix-blend-mode%3Amultiply%22%2F%3E%0A%20%3C%2Fsvg%3E");
+}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--page-art) center top / cover no-repeat}
+:root[data-theme=dark] body{background-color:#312c27;--page-art:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20960%22%3E%0A%20%3Cdefs%3E%0A%20%3CradialGradient%20id%3D%22paper%22%20cx%3D%22.44%22%20cy%3D%22.36%22%20r%3D%22.8%22%3E%3Cstop%20stop-color%3D%22%23312c27%22%2F%3E%3Cstop%20offset%3D%22.62%22%20stop-color%3D%22%23312c27%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23736252%22%2F%3E%3C%2FradialGradient%3E%0A%20%3Cfilter%20id%3D%22edge%22%20x%3D%22-20%25%22%20y%3D%22-20%25%22%20width%3D%22140%25%22%20height%3D%22140%25%22%3E%3CfeTurbulence%20baseFrequency%3D%22.034%20.075%22%20numOctaves%3D%223%22%20seed%3D%2223%22%20result%3D%22rough%22%2F%3E%3CfeDisplacementMap%20in%3D%22SourceGraphic%22%20in2%3D%22rough%22%20scale%3D%2220%22%2F%3E%3C%2Ffilter%3E%0A%20%3Cfilter%20id%3D%22grain%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.52%20.78%22%20numOctaves%3D%223%22%20seed%3D%2211%22%20stitchTiles%3D%22stitchTiles%22%2F%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%2F%3E%3C%2Ffilter%3E%0A%20%3C%2Fdefs%3E%0A%20%3Cpath%20fill%3D%22url%28%23paper%29%22%20d%3D%22M0%200h1440v960H0z%22%2F%3E%0A%20%3Cg%20filter%3D%22url%28%23edge%29%22%3E%0A%20%3Cpath%20fill%3D%22%239b9384%22%20opacity%3D%22.13%22%20d%3D%22M-85%20711C96%20696%20155%20480%20334%20484c-70%2079-103%20153-151%20254S31%20920-85%20923ZM1510%20528c-99%204-129%20111-231%20165-53%2029-108%2044-182%2055%20132%2065%20280%207%20413-62Z%22%2F%3E%0A%20%3Cpath%20fill%3D%22%239b9384%22%20opacity%3D%22.16%22%20d%3D%22M-82%20843c151%2027%20243-80%20342-172-43%20101-135%20213-342%20293zm1550-102c-57-52-100%2049-189%2078-48%2016-87%2028-180%2027%20110%2038%20272%207%20369-53z%22%2F%3E%0A%20%3Cpath%20d%3D%22M1077%2091c109-51%20225-29%20319%2049M1119%20112c79-30%20167-12%20229%2015M-45%20593c93-12%20141-55%20196-117%22%20fill%3D%22none%22%20stroke%3D%22%23736252%22%20stroke-width%3D%224%22%20opacity%3D%22.40%22%2F%3E%0A%20%3Ccircle%20cx%3D%221298%22%20cy%3D%22200%22%20r%3D%2277%22%20fill%3D%22%23c3614b%22%20opacity%3D%22.71%22%2F%3E%0A%20%3Cpath%20d%3D%22M1228%20229c56-36%20119-55%20197-53m-221%2074c58-20%2091-31%20145-30%22%20fill%3D%22none%22%20stroke%3D%22%23312c27%22%20stroke-width%3D%226%22%20opacity%3D%22.38%22%2F%3E%0A%20%3Cpath%20d%3D%22M1214%20163c32-60%20106-76%20156-39m-168%2052c-14%2056%209%20110%2064%20130%22%20fill%3D%22none%22%20stroke%3D%22%23c3614b%22%20stroke-width%3D%223%22%20opacity%3D%22.38%22%2F%3E%0A%20%3C%2Fg%3E%0A%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%239b9384%22%20opacity%3D%22.13%22%20stroke-width%3D%221.35%22%3E%0A%20%3Cpath%20d%3D%22M-60%20280c179-3%20215-108%20300-143%2043-18%2092-25%20160-20M-55%20299c127%200%20183-53%20238-102%2057-51%20119-66%20213-64M-49%20320c104-7%20182-51%20236-106%2055-50%20116-62%20172-65M-57%20340c107-14%20185-51%20232-96%22%2F%3E%0A%20%3Cpath%20d%3D%22M1455%20536c-83-21-107%2037-173%2055-94%2026-136-24-224%2011m404-46c-85-24-109%2030-174%2049-95%2028-131-17-214%208m389-38c-66-16-109%2023-153%2044-69%2033-118%209-162%204%22%2F%3E%0A%20%3C%2Fg%3E%0A%20%3Crect%20width%3D%221440%22%20height%3D%22960%22%20opacity%3D%22.16%22%20filter%3D%22url%28%23grain%29%22%20style%3D%22mix-blend-mode%3Amultiply%22%2F%3E%0A%20%3C%2Fsvg%3E")}
 @media(max-width:650px){
- body{background-position:66% top;background-size:auto 100svh;
+ body::before{background-position:66% top;background-size:auto 100svh}
+ body{
  padding-left:max(clamp(8px,3vw,36px),env(safe-area-inset-left));
  padding-right:max(clamp(8px,3vw,36px),env(safe-area-inset-right))}
 }
 .app-sheet{width:min(100%,960px);margin:auto;padding:0 clamp(12px,3vw,30px);background:var(--bg);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 42px #16110c35}
 .app-sheet>header,.app-sheet>main{width:100%}
-.practice-action{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.practice-action{display:grid;grid-template-columns:auto minmax(0,1fr) 88px;align-items:center;gap:10px;padding-inline-end:12px}
 #start{order:-1;width:auto;min-height:44px;font-size:16px;padding:7px 15px}
-#count{text-align:left}
+#count{text-align:left;grid-row:auto}
 .layout-preview{display:none}
 html.previewing .app-sheet{display:none}
 html.previewing .layout-preview{display:block}
@@ -128,6 +130,7 @@ html.previewing .layout-preview{display:block}
 .layout-preview iframe{display:block;border:1px solid var(--line);border-radius:8px;height:720px}
 .layout-preview .phone{width:390px;max-width:100%}
 .layout-preview .desktop{width:1100px}
+#home{display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:transparent}
 .hibi-logo{color:#4A3342}
 :root[data-theme=dark] .hibi-logo{color:#F8EEE2}
 :root[data-theme=dark] .hibi-sun{fill:#E69D98}
@@ -143,19 +146,71 @@ html.previewing .layout-preview{display:block}
 
 .practice-action #count{color:var(--ink);font-size:15px;font-weight:750}
 
-#category-cards{display:grid;gap:8px;margin-bottom:18px}
-.category-card{border:1px solid var(--line);border-radius:12px;background:var(--panel)}
-.category-heading{display:flex;align-items:center;gap:4px;padding:3px 6px}
+#category-cards,#word-cards{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-bottom:18px}
+.category-card{min-width:0}
+.category-heading{display:flex;align-items:center;gap:8px;padding:9px 12px}
 .category-toggle{flex:1;min-width:0;display:flex;align-items:center;gap:8px;text-align:left;border:0;background:transparent;font-weight:750;padding-inline:6px}
-.category-count{margin-left:auto;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.category-count{margin-left:auto;width:6ch;flex:none;text-align:right;font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .category-chevron{width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);flex:none;margin:0 3px 4px}
 .category-toggle[aria-expanded=true] .category-chevron{transform:rotate(225deg);margin-bottom:-4px}
 .category-bulk,#bulk-script{font-size:13px;font-weight:650}
-.category-bulk{padding-inline:8px;white-space:nowrap}
-.category-card .rows{padding:8px;border-top:1px solid var(--line)}
+.category-bulk{padding-inline:8px;white-space:nowrap;border-color:transparent;background:transparent}
+.category-bulk:hover{background:var(--tint)}
+.reference-option{display:flex;align-items:center;gap:8px;min-height:44px;width:fit-content;margin-bottom:12px;cursor:pointer}
+#chart[hidden]{display:none}
+#reference details{margin:4px 0;padding-inline:10px;border:1px solid var(--line);border-radius:8px}
+#reference .reference-entries{padding-bottom:8px}
+#reference .entry{white-space:nowrap}
+.category-card .rows{padding:4px 12px 12px}
 .category-card .rows[hidden]{display:none}
 @media(max-width:400px){.category-toggle{font-size:13px;gap:5px}.category-count,.category-bulk{font-size:12px}}
-</style></head><body><div class="app-sheet"><header><svg class="hibi-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="108.7939" height="44" viewBox="16 0 108.7939 44" role="img" aria-labelledby="badge-title">
+
+.script-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
+.script-tabs [role=tab]{padding-inline:4px}
+.category-bulk,#bulk-script{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:5px;flex:0 0 98px;width:98px;padding-inline:4px;border:1px solid transparent;white-space:nowrap}
+#bulk-script{grid-column:3;grid-row:1}
+@media(max-width:480px){.practice-action{grid-template-columns:minmax(0,1fr) 88px}.practice-action #start{grid-column:1/-1;justify-self:start}.practice-action #bulk-script{grid-column:2;grid-row:2}}
+:root{--practice-fill:#a53d2d;--practice-ink:var(--practice-fill);--bulk-hover:#f2ded7}
+:root[data-theme=dark]{--practice-ink:#f3a18a;--bulk-hover:#49332e}
+.script-tabs [role=tab][aria-selected=true]{border-bottom-color:var(--practice-ink)}
+#answer-form{gap:12px}
+#answer:focus-visible{outline:2px solid var(--practice-ink);outline-offset:1px}
+#answer-form .primary{background:var(--practice-fill);border-color:var(--practice-fill);color:#fff}
+.category-toggle[aria-expanded=true] > span:first-child{color:var(--practice-ink)}
+input[type=checkbox],input[type=radio]{accent-color:var(--practice-fill)}
+.category-bulk[data-action],#bulk-script[data-action]{color:var(--ink);border-color:currentColor;background:transparent}
+.category-bulk[data-action]:hover,#bulk-script[data-action]:hover{background:var(--bulk-hover)}
+#settings-panel fieldset + fieldset{margin-top:28px}
+#settings-panel legend{margin-bottom:8px}
+.setting-description{margin:0 0 14px;color:var(--muted);font-size:14px}
+html{scrollbar-gutter:stable}
+
+#glyph.word-prompt{font-size:clamp(40px,12vw,88px);overflow-wrap:anywhere}
+#word-cards .rows{grid-template-columns:repeat(auto-fit,minmax(112px,1fr))}
+#word-cards .row span{font-family:var(--kana-font)}
+#word-cards .theme-list{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding-inline:8px 0}
+#word-cards .theme-list[hidden]{display:none}
+#word-cards .theme-list > .category-card{border-inline-start:2px solid var(--line)}
+#word-cards .theme-list > .category-card:has(> .category-heading > [aria-expanded=true]){border-inline-start-color:var(--practice-ink)}
+#start{display:inline-flex;align-items:center;justify-content:center;gap:8px}
+#start svg{flex:none}
+.session-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;border-radius:12px;background:var(--panel);border:1px solid var(--line);margin-bottom:26px}
+.session-bar p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.session-bar #start{order:0;flex-shrink:0}
+.selection-scope{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 12px 12px 0;border-bottom:1px solid var(--line)}
+.selection-scope #count{color:var(--muted);font-weight:550;font-size:14px}
+#characters-title,#words-title{font:600 24px/1.2 Georgia,serif;margin:26px 0 8px}
+#category-cards,#word-cards{gap:0}
+.category-toggle{font-weight:600;min-height:44px}
+.category-count{color:var(--muted);font-weight:400}
+.category-count[data-active=true]{color:var(--practice-ink);font-weight:750}
+.category-heading{padding-block:3px}
+.category-bulk[data-action],#bulk-script[data-action]{border-color:color-mix(in srgb,currentColor 52%,transparent);font-weight:550;min-height:40px}
+@media(max-width:480px){.session-bar{flex-wrap:wrap}.session-bar #start{width:100%}.category-heading{padding-inline:0}.selection-scope{padding-inline-end:0}}
+.bulk-icon{font-size:15px;line-height:1;width:1ch;text-align:center}
+#back{display:inline-flex;align-items:center;gap:6px;min-height:44px}
+#deck-size{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+</style></head><body><div class="app-sheet"><header><button type="button" id="home" aria-label="Hibi home"><svg class="hibi-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="108.7939" height="44" viewBox="16 0 108.7939 44" role="img" aria-labelledby="badge-title">
 <title id="badge-title">Hibi — 日々</title>
 
 <defs><path id="stem" d="M29 0 L3.9 0 3.9 -3.5 C4.7 -3.6 5.5 -3.6 6.4 -3.7 7.3 -3.8 8 -3.9 8.6 -4.1 9.6 -4.4 10.4 -5 10.8 -5.8 11.3 -6.6 11.5 -7.6 11.5 -8.9 L11.5 -40.9 C11.5 -42.1 11.3 -43.1 10.8 -44 10.3 -44.9 9.6 -45.7 8.6 -46.4 8 -46.8 7 -47.1 5.7 -47.4 4.5 -47.7 3.3 -47.9 2.3 -48 L2.3 -51.5 20.6 -52.6 21.4 -51.9 21.4 -9.5 C21.4 -8.3 21.6 -7.2 22.1 -6.4 22.5 -5.6 23.3 -5 24.3 -4.6 25.1 -4.3 25.8 -4.1 26.5 -3.9 27.3 -3.7 28.1 -3.6 29 -3.5 Z"/></defs>
@@ -169,9 +224,9 @@ html.previewing .layout-preview{display:block}
 <g id="japanese" fill="currentColor" transform="translate(87.3939336492891 29.21) scale(0.02 -0.02)">
 <path transform="translate(0 0)" d="M154 789H852V-76H723V668H277V-78H154ZM238 453H776V335H238ZM238 109H777V-12H238Z"/><path transform="translate(1000 0)" d="M364 607H777V488H364ZM327 220 401 320Q451 299 506.0 271.5Q561 244 613.5 213.0Q666 182 711.0 150.0Q756 118 787 87L704 -27Q676 3 633.0 36.5Q590 70 538.5 103.0Q487 136 432.5 166.5Q378 197 327 220ZM391 799 524 769Q490 667 442.0 560.5Q394 454 332.5 358.0Q271 262 197 191Q183 202 162.5 214.5Q142 227 121.0 238.5Q100 250 82 258Q138 308 186.5 373.0Q235 438 274.0 510.5Q313 583 342.5 657.0Q372 731 391 799ZM727 607H756L778 612L870 563Q845 493 806.5 415.0Q768 337 722.5 262.5Q677 188 629 127Q608 144 576.5 164.5Q545 185 521 198Q554 239 585.5 288.0Q617 337 645.0 388.5Q673 440 694.0 489.0Q715 538 727 577Z"/>
 </g>
-</svg><button id="theme" type="button" aria-label="Switch to dark mode"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.7 14.4A9.1 9.1 0 0 1 9.6 3.3a.7.7 0 0 0-.9-.8A10 10 0 1 0 21.5 15.3a.7.7 0 0 0-.8-.9Z"/></svg><svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button></header>
-<main><section id="setup"><div role="tablist" aria-label="Script" class="script-tabs"><button role="tab" id="Hiragana" aria-controls="panel">Hiragana</button><button role="tab" id="Katakana" aria-controls="panel">Katakana</button></div><div id="panel" role="tabpanel"><div class="script-intro"><span id="script-icon" lang="ja" aria-hidden="true"></span><div><h1 id="script-title"></h1><p>Choose kana to practise reading.</p></div></div><div class="practice-action"><strong id="count" role="status"></strong><button id="bulk-script" type="button"></button><button class="primary" id="start">Practice →</button></div><div id="category-cards"></div><fieldset class="font-options" id="kana-font"><legend>Kana font</legend><div class="font-cards"><label class="font-card" data-preview="gothic"><input type="radio" name="kana-font" value="gothic"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Gothic</strong><small>Screen</small></label><label class="font-card" data-preview="textbook"><input type="radio" name="kana-font" value="textbook"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Kyōkasho</strong><small>Textbook</small></label><label class="font-card" data-preview="mincho"><input type="radio" name="kana-font" value="mincho"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Minchō</strong><small>Print</small></label></div></fieldset></div></section>
-<section id="drill" hidden><h1>Reading practice</h1><article><div class="bar"><strong id="scriptName"></strong><button id="back">Change rows</button></div><div id="glyph" class="stage" lang="ja"></div><label for="answer">Reading in rōmaji</label><form id="answer-form"><input id="answer" class="input" placeholder="Type the reading" autocorrect="off" enterkeyhint="done" autocomplete="off" autocapitalize="none" spellcheck="false"><button type="submit" class="primary">Check</button></form><p id="feedback" role="status"></p><div class="bar"><button id="reveal">Show answer</button><span id="stats"></span></div></article><details id="chart"><summary>Kana reference</summary><div id="reference"></div></details></section></main></div><div class="layout-preview" id="layout-preview"></div>
+</svg></button><button id="theme" type="button" aria-label="Switch to dark mode"><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.7 14.4A9.1 9.1 0 0 1 9.6 3.3a.7.7 0 0 0-.9-.8A10 10 0 1 0 21.5 15.3a.7.7 0 0 0-.8-.9Z"/></svg><svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button></header>
+<main><section id="setup"><div role="tablist" aria-label="Practice setup" class="script-tabs"><button role="tab" id="Hiragana" aria-controls="panel">Hiragana</button><button role="tab" id="Katakana" aria-controls="panel">Katakana</button><button type="button" role="tab" id="Kanji" aria-controls="kanji-panel">Kanji</button><button type="button" role="tab" id="Settings" aria-controls="settings-panel">Settings</button></div><div id="panel" role="tabpanel"><div class="script-intro"><span id="script-icon" lang="ja" aria-hidden="true"></span><div><h1 id="script-title" class="setup-title"></h1><p>Choose characters and words to practise.</p></div></div><div class="session-bar"><div><strong>Your practice</strong><p id="session-mix"></p></div><button class="primary" id="start"><span id="practice-label">Practice</span><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M3 1.5 10.5 6 3 10.5Z"/></svg></button></div><div class="selection-scope"><strong id="count" role="status"></strong><button id="bulk-script" type="button"></button></div><section aria-labelledby="characters-title"><h2 id="characters-title">Characters</h2><div id="category-cards"></div></section><section aria-labelledby="words-title"><h2 id="words-title">Words</h2><div id="word-cards"></div></section></div><div id="kanji-panel" role="tabpanel" aria-labelledby="Kanji" hidden><div class="script-intro"><span class="kanji-icon" lang="ja" aria-hidden="true">漢</span><div><h1 class="setup-title">Kanji</h1><p>Practise reading kanji.</p></div></div></div><div id="settings-panel" role="tabpanel" aria-labelledby="Settings" hidden><div class="script-intro"><span class="settings-icon" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h6m4 0h6M4 12h11m4 0h1M4 18h2m4 0h10M10 3v6m9 0v6M6 15v6"/></svg></span><div><h1 class="setup-title">Settings</h1><p>Adjust how you practise.</p></div></div><fieldset class="font-options" id="kana-font" aria-describedby="font-description"><legend>Kana font</legend><p class="setting-description" id="font-description">Choose how kana look in the selection cards and practice prompts.</p><div class="font-cards"><label class="font-card" data-preview="gothic"><input type="radio" name="kana-font" value="gothic"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Gothic</strong><small>Screen</small></label><label class="font-card" data-preview="textbook"><input type="radio" name="kana-font" value="textbook"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Kyōkasho</strong><small>Textbook</small></label><label class="font-card" data-preview="mincho"><input type="radio" name="kana-font" value="mincho"><span class="font-sample" lang="ja" aria-hidden="true"></span><strong>Minchō</strong><small>Print</small></label></div></fieldset><fieldset class="font-options" aria-describedby="reference-description"><legend>Kana reference</legend><p class="setting-description" id="reference-description">Look up readings for your selected kana during a drill, grouped by script and category.</p><label class="reference-option"><input id="reference-enabled" type="checkbox">Show kana reference during practice</label></fieldset></div></section>
+<section id="drill" hidden><h1>Reading practice</h1><article><div class="bar"><button id="back" type="button"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m7-7-7 7 7 7"/></svg>Back</button><span id="deck-size"></span></div><div id="glyph" class="stage" lang="ja"></div><label for="answer">Reading in rōmaji</label><form id="answer-form"><input id="answer" class="input" placeholder="Type the reading" autocorrect="off" enterkeyhint="done" autocomplete="off" autocapitalize="none" spellcheck="false"><button type="submit" class="primary">Check</button></form><p id="feedback" role="status"></p><div class="bar"><button id="reveal">Show answer</button><span id="stats"></span></div></article><details id="chart"><summary>Kana reference</summary><div id="reference"></div></details></section></main></div><div class="layout-preview" id="layout-preview"></div>
 <script>
 'use strict';
 const byId=id=>document.getElementById(id);
@@ -180,6 +235,42 @@ const groups=[
 ].map(([label,glyphs,sounds])=>({label,cards:[...glyphs].map((g,i)=>[g,sounds.split(' ')[i]])}));
 for(const [g,prefix] of Object.entries({'き':'ky','し':'sh','ち':'ch','に':'ny','ひ':'hy','み':'my','り':'ry','ぎ':'gy','じ':'j','び':'by','ぴ':'py'})){
  groups.push({label:prefix+'…',cards:[...'ゃゅょ'].map((suffix,i)=>[g+suffix,prefix+'auo'[i]])});
+}
+// Starter words are curated for the reading patterns taught in each level.
+const wordLevels={
+ Hiragana:[
+  ['Everyday words','いぬ:inu ねこ:neko すし:sushi いえ:ie やま:yama あさ:asa よる:yoru ひる:hiru はる:haru なつ:natsu あき:aki ふゆ:fuyu そら:sora あめ:ame ゆき:yuki くも:kumo つき:tsuki ほし:hoshi うみ:umi かわ:kawa いけ:ike はな:hana くさ:kusa き:ki たね:tane み:mi もり:mori しま:shima みち:michi はし:hashi まち:machi むら:mura えき:eki にわ:niwa へや:heya まど:mado と:to いす:isu つくえ:tsukue ほん:hon かみ:kami え:e うた:uta おと:oto こえ:koe ことば:kotoba なまえ:namae て:te あし:ashi め:me みみ:mimi くち:kuchi は:ha かお:kao かた:kata ひざ:hiza むね:mune せなか:senaka ゆび:yubi のど:nodo ほね:hone ち:chi ひと:hito こども:kodomo うま:uma うし:ushi とり:tori むし:mushi かめ:kame さる:saru くま:kuma しか:shika きつね:kitsune たぬき:tanuki うさぎ:usagi りす:risu かに:kani たこ:tako いか:ika こめ:kome しお:shio みそ:miso なす:nasu まめ:mame いも:imo のり:nori もち:mochi かき:kaki もも:momo なし:nashi うめ:ume みかん:mikan ちかい:chikai とおい:tooi あか:aka あお:ao しろ:shiro くろ:kuro みぎ:migi ひだり:hidari うえ:ue した:shita なか:naka そと:soto まえ:mae あと:ato いま:ima'],
+  ['Longer basic words','さかな:sakana たましい:tamashii あさひ:asahi おなか:onaka たのしい:tanoshii'],
+  ['Voiced sounds','かぜ:kaze みず:mizu くだもの:kudamono たまご:tamago ぶた:buta'],
+  ['Small っ','きって:kitte きっぷ:kippu ざっし:zasshi まっすぐ:massugu ちょっと:chotto'],
+  ['Kana combinations','しゃしん:shashin おちゃ:ocha りょこう:ryokou びょういん:byouin じてんしゃ:jitensha']
+ ],
+ Katakana:[
+  ['Everyday words','カメラ:kamera テレビ:terebi メモ:memo バス:basu ペン:pen パン:pan ハム:hamu チキン:chikin ハンバーグ:hanbaagu サラダ:sarada トースト:toosuto カレー:karee ライス:raisu パスタ:pasuta ピザ:piza ラーメン:raamen スープ:suupu ソース:soosu バター:bataa ミルク:miruku ココア:kokoa コーラ:koora ソーダ:sooda ワイン:wain ビール:biiru ラム:ramu ウイスキー:uisukii カクテル:kakuteru アイス:aisu プリン:purin ゼリー:zerii グミ:gumi ガム:gamu クッキー:kukkii ドーナツ:doonatsu メロン:meron レモン:remon オレンジ:orenji キウイ:kiui パイン:pain マンゴー:mangoo アボカド:abokado キャベツ:kyabetsu レタス:retasu ピーマン:piiman コーン:koon ポテト:poteto テーブル:teeburu ソファ:sofa ベンチ:benchi デスク:desuku ドア:doa カーテン:kaaten ライト:raito ランプ:ranpu タオル:taoru ブラシ:burashi シャンプー:shanpuu コップ:koppu グラス:gurasu ボウル:bouru スプーン:supuun ナイフ:naifu フォーク:fooku トレー:toree ノート:nooto カード:kaado シール:shiiru テープ:teepu ページ:peeji インク:inku シャープ:shaapu ハサミ:hasami ポスター:posutaa バイク:baiku トラック:torakku ボート:booto フェリー:ferii モーター:mootaa ガソリン:gasorin タイヤ:taiya ブレーキ:bureeki コート:kooto セーター:seetaa スカート:sukaato ズボン:zubon ベルト:beruto マフラー:mafuraa ブーツ:buutsu サンダル:sandaru スーツ:suutsu ネクタイ:nekutai ピアス:piasu ボタン:botan テレビゲーム:terebigeemu ラジオ:rajio ビデオ:bideo マスク:masuku ゲーム:geemu ピアノ:piano ギター:gitaa ドラム:doramu ダンス:dansu テニス:tenisu サッカー:sakkaa ゴルフ:gorufu ヨガ:yoga'],
+  ['Longer words','アニメ:anime トマト:tomato ホテル:hoteru バナナ:banana レストラン:resutoran'],
+  ['Long vowel mark ー','ケーキ:keeki コーヒー:koohii タクシー:takushii チーズ:chiizu スーパー:suupaa'],
+  ['Small ッ','ベッド:beddo チケット:chiketto バッグ:baggu カップ:kappu ポケット:poketto'],
+  ['Loanword combinations','ファイル:fairu チェス:chesu シャツ:shatsu ジュース:juusu パーティー:paatii']
+ ]
+};
+// Index ranges keep the original word IDs and saved selections intact.
+const starterThemes={
+ Hiragana:[
+  ['Animals',[[0,2],[64,79]]],['Food',[[2,3],[79,92]]],
+  ['Time & seasons',[[5,12],[104,107]]],['Nature & weather',[[4,5],[12,28]]],
+  ['Places & home',[[3,4],[28,39]]],['Things & language',[[39,47]]],
+  ['People & body',[[47,64]]],['Colours & directions',[[92,104]]]
+ ],
+ Katakana:[
+  ['Meals & ingredients',[[5,19],[35,47]]],['Drinks & snacks',[[19,35]]],
+  ['Home & kitchen',[[47,65]]],['Stationery',[[2,3],[4,5],[65,74]]],
+  ['Transport',[[3,4],[74,82]]],['Clothes & accessories',[[82,94],[97,98]]],
+  ['Media & music',[[0,2],[94,97],[98,102]]],['Sports & hobbies',[[102,107]]]
+ ]
+};
+let themeCards=[];
+function displayCard([kana,,name,word]){
+ return word?kana:glyph(kana,name);
 }
 const aliases={し:['si'],ち:['ti'],つ:['tu'],ふ:['hu'],じ:['zi'],ぢ:['di','zi'],づ:['du'],を:['o'],ん:['nn']};
 const katakana=g=>[...g].map(c=>String.fromCharCode(c.charCodeAt(0)+96)).join('');
@@ -192,8 +283,25 @@ updateVisibleHeight();
 const scripts=['Hiragana','Katakana'];
 function read(key){try{return JSON.parse(localStorage.getItem(key))||{}}catch{return {}}}
 const old=read('kanaDesk1'),prefs=read('kanaDesk2');
+const referenceEnabled=byId('reference-enabled');
+referenceEnabled.checked=prefs.referenceEnabled===true;
+referenceEnabled.onchange=save;
 let script=scripts.includes(prefs.script)?prefs.script:old.mode==='Katakana'?'Katakana':'Hiragana';
 const selected=Object.fromEntries(scripts.map(s=>[s,new Set(prefs[s]??(Array.isArray(old.rows)?old.rows:groups.slice(0,10).map((_,i)=>i)))]));
+const selectedWords=Object.fromEntries(scripts.map(name=>[name,new Set(prefs.words?.[name]??[])]));
+function wordsInLevel(name,index){
+ return wordLevels[name][index][1].split(' ').map(item=>item.split(':'));
+}
+// Keep existing IDs for the first five words of every level.
+function wordKey(level,index){
+ return index<5?level*5+index:25+(index-5)*5+level;
+}
+function levelWordKeys(name,level){
+ return wordsInLevel(name,level).map((_,index)=>wordKey(level,index));
+}
+function scriptWordKeys(name){
+ return wordLevels[name].flatMap((_,level)=>levelWordKeys(name,level));
+}
 const fontPicker=byId('kana-font');
 const fontChoices=[...fontPicker.querySelectorAll('input')];
 const initialFont=fontChoices.find(option=>option.value===prefs.font)||fontChoices[0];
@@ -201,11 +309,11 @@ initialFont.checked=true;
 document.documentElement.dataset.font=initialFont.value;
 fontPicker.onchange=event=>{document.documentElement.dataset.font=event.target.value;save()};
 
-function save(){try{localStorage.setItem('kanaDesk2',JSON.stringify({script,font:document.documentElement.dataset.font,theme:document.documentElement.dataset.theme,...Object.fromEntries(scripts.map(s=>[s,[...selected[s]]]))}))}catch{}}
+function save(){try{localStorage.setItem('kanaDesk2',JSON.stringify({script,words:Object.fromEntries(scripts.map(name=>[name,[...selectedWords[name]]])),referenceEnabled:referenceEnabled.checked,font:document.documentElement.dataset.font,theme:document.documentElement.dataset.theme,...Object.fromEntries(scripts.map(s=>[s,[...selected[s]]]))}))}catch{}}
 function theme(value){document.documentElement.dataset.theme=value;const button=byId('theme');const label=value==='dark'?'Switch to light mode':'Switch to dark mode';button.setAttribute('aria-label',label);button.title=label}
 theme(prefs.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
 byId('theme').onclick=()=>{theme(document.documentElement.dataset.theme==='dark'?'light':'dark');save()};
-const glyph=g=>script==='Hiragana'?g:katakana(g);
+const glyph=(g,name=script)=>name==='Hiragana'?g:katakana(g);
 const scriptIndices=groups.map((_,i)=>i);
 function countCards(indices, selection){
  return indices.reduce((total,i)=>total+(!selection||selection.has(i)?groups[i].cards.length:0),0);
@@ -214,60 +322,142 @@ function categoryIndices(index){
  const [,start,end]=categories[index];
  return scriptIndices.slice(start,end);
 }
-function updateBulkLabel(button,indices,scope){
- const selection=selected[script];
- const all=indices.every(i=>selection.has(i));
- button.textContent=all?'Clear '+scope:'Select all '+scope;
+function updateBulkLabel(button,indices,scope,all=indices.every(i=>selected[script].has(i))){
+ const label=all?'Clear all':'Select all';
+ const icon=document.createElement('span');
+ icon.className='bulk-icon';
+ icon.setAttribute('aria-hidden','true');
+ icon.textContent=all?'−':'+';
+ button.replaceChildren(icon,label);
+ button.setAttribute('aria-label',label+' '+scope);
+ button.dataset.action=all?'clear':'select';
  button.disabled=!indices.length;
 }
-function toggleRows(indices){
- const selection=selected[script];
+function toggleRows(indices,selection=selected[script]){
  const all=indices.every(i=>selection.has(i));
  for(const i of indices){
   if(all)selection.delete(i);
   else selection.add(i);
  }
  for(const box of byId('category-cards').querySelectorAll('input[type=checkbox]')){
-  box.checked=selection.has(Number(box.dataset.group));
+  box.checked=selected[script].has(Number(box.dataset.group));
+ }
+ for(const box of byId('word-cards').querySelectorAll('input')){
+  box.checked=selectedWords[script].has(Number(box.value));
  }
  updateCount();
  save();
 }
 function updateCount(){
  const selection=selected[script];
- const total=countCards(scriptIndices,selection);
- byId('count').textContent=total+' of '+countCards(scriptIndices)+' kana selected';
- byId('start').disabled=!total;
- updateBulkLabel(byId('bulk-script'),scriptIndices,script);
+ const wordTotal=selectedWords[script].size;
+ const total=countCards(scriptIndices,selection)+wordTotal;
+ byId('count').textContent=script+' · '+total+' selected';
+ const practiceTotal=scripts.reduce((sum,name)=>sum+countCards(scriptIndices,selected[name])+selectedWords[name].size,0);
+ const parts=scripts.map(name=>({name,total:countCards(scriptIndices,selected[name])+selectedWords[name].size})).filter(part=>part.total);
+ byId('session-mix').textContent=parts.length?parts.map(part=>part.total+' '+part.name).join(' + '):'Select a character group or word to begin.';
+ byId('start').disabled=!practiceTotal;
+ byId('practice-label').textContent=practiceTotal?'Practice '+practiceTotal+' items':'Practice';
+ const allSelected=total===countCards(scriptIndices)+scriptWordKeys(script).length;
+ updateBulkLabel(byId('bulk-script'),scriptIndices,script,allSelected);
+ for(const {toggle,count,bulk,index} of wordCards){
+  const indices=levelWordKeys(script,index);
+  const picked=indices.filter(i=>selectedWords[script].has(i)).length;
+  count.dataset.active=String(picked>0);
+  count.textContent=picked+'/'+indices.length;
+  const title='Level '+(index+1)+' · '+wordLevels[script][index][0];
+  toggle.firstElementChild.textContent=title;
+  toggle.setAttribute('aria-label',title+', '+picked+' of '+indices.length+' words selected');
+  updateBulkLabel(bulk,indices,title,picked===indices.length);
+ }
+ for(const {toggle,count,bulk,title,indices} of themeCards){
+  const picked=indices.filter(key=>selectedWords[script].has(key)).length;
+  count.dataset.active=String(picked>0);
+  count.textContent=picked+'/'+indices.length;
+  toggle.setAttribute('aria-label',title+', '+picked+' of '+indices.length+' words selected');
+  updateBulkLabel(bulk,indices,title,picked===indices.length);
+ }
  categoryCards.forEach(({toggle,count,bulk,title,indices})=>{
   const picked=countCards(indices,selection), available=countCards(indices);
+  count.dataset.active=String(picked>0);
   count.textContent=picked+'/'+available;
   toggle.setAttribute('aria-label',title+', '+picked+' of '+available+' kana selected');
   updateBulkLabel(bulk,indices,title);
-  bulk.setAttribute('aria-label',bulk.textContent);
-  bulk.textContent=picked===available?'Clear all':'Select all';
  });
 }
-byId('bulk-script').onclick=()=>toggleRows(scriptIndices);
+byId('bulk-script').onclick=()=>{
+ const clear=byId('bulk-script').dataset.action==='clear';
+ selected[script]=new Set(clear?[]:scriptIndices);
+ selectedWords[script]=new Set(clear?[]:scriptWordKeys(script));
+ render();
+ save();
+};
 const categories=[['Basic',0,10],['Voiced',10,15],['Combinations',15,groups.length]];
-const categoryCards=categories.map(([title],index)=>{
+function makeCategoryCard(title,id,container){
  const card=document.createElement('section');
  card.className='category-card';
- card.innerHTML=`<div class="category-heading"><button class="category-toggle" type="button" aria-expanded="false" aria-controls="category-${index}"><span>${title}</span><span class="category-count" aria-hidden="true"></span><span class="category-chevron" aria-hidden="true"></span></button><button class="category-bulk" type="button"></button></div><div class="rows" id="category-${index}" hidden></div>`;
+ card.innerHTML=`<div class="category-heading"><button class="category-toggle" type="button" aria-expanded="false" aria-controls="${id}"><span>${title}</span><span class="category-count" aria-hidden="true"></span><span class="category-chevron" aria-hidden="true"></span></button><button class="category-bulk" type="button"></button></div><div class="rows" id="${id}" hidden></div>`;
  const toggle=card.querySelector('.category-toggle'), count=card.querySelector('.category-count');
  const bulk=card.querySelector('.category-bulk'), grid=card.querySelector('.rows');
- const indices=categoryIndices(index);
  toggle.onclick=()=>{
   grid.hidden=!grid.hidden;
   toggle.setAttribute('aria-expanded',!grid.hidden);
  };
- bulk.onclick=()=>toggleRows(indices);
- byId('category-cards').append(card);
- return {toggle,count,bulk,title,indices,grid};
+ container.append(card);
+ return {toggle,count,bulk,title,grid};
+}
+const categoryCards=categories.map(([title],index)=>{
+ const card=makeCategoryCard(title,'category-'+index,byId('category-cards'));
+ const indices=categoryIndices(index);
+ card.bulk.onclick=()=>toggleRows(indices);
+ return {...card,indices};
 });
+const wordCards=wordLevels.Hiragana.map((_,index)=>{
+ const card=makeCategoryCard('', 'words-'+index,byId('word-cards'));
+ card.bulk.onclick=()=>toggleRows(levelWordKeys(script,index),selectedWords[script]);
+ return {...card,index};
+});
+function appendWord(grid,word,key){
+   const label=document.createElement('label'), box=document.createElement('input'), text=document.createElement('span');
+   label.className='row';
+   box.type='checkbox';
+   box.value=key;
+   box.checked=selectedWords[script].has(key);
+   box.onchange=()=>{
+    if(box.checked)selectedWords[script].add(key);
+    else selectedWords[script].delete(key);
+    updateCount();
+    save();
+   };
+   text.lang='ja';text.textContent=word;
+   label.append(box,text);
+   grid.append(label);
+}
 function render(){
-
- for(const s of scripts){byId(s).setAttribute('aria-selected',s===script);byId(s).tabIndex=s===script?0:-1}
+ selectSetupTab(script);
+ themeCards=[];
+ for(const {grid,index} of wordCards){
+  const words=wordsInLevel(script,index);
+  grid.replaceChildren();
+  grid.classList.toggle('theme-list',index===0);
+  if(index!==0){
+   words.forEach(([word],i)=>appendWord(grid,word,wordKey(index,i)));
+   continue;
+  }
+  themeCards=starterThemes[script].map(([title,ranges],themeIndex)=>{
+   const card=makeCategoryCard(title,'word-theme-'+themeIndex,grid);
+   const indices=[];
+   for(const [start,end] of ranges){
+    for(let i=start;i<end;i++){
+     const key=wordKey(index,i);
+     indices.push(key);
+     appendWord(card.grid,words[i][0],key);
+    }
+   }
+   card.bulk.onclick=()=>toggleRows(indices,selectedWords[script]);
+   return {...card,indices};
+  });
+ }
  byId('panel').setAttribute('aria-labelledby',script);
  byId('script-title').textContent=script;
  for(const sample of fontPicker.querySelectorAll('.font-sample'))sample.textContent=script==='Hiragana'?'あ き さ':'ア キ サ';
@@ -283,7 +473,39 @@ function render(){
  }
  updateCount();
 }
-for(const s of scripts){byId(s).onclick=()=>{script=s;render();save()};byId(s).onkeydown=e=>{if(['ArrowRight','ArrowLeft','Home','End'].includes(e.key)){e.preventDefault();const dest=e.key==='Home'?scripts[0]:e.key==='End'?scripts[1]:scripts.find(t=>t!==s);byId(dest).click();byId(dest).focus()}}}
+const setupTabs=[...scripts,'Kanji','Settings'];
+function selectSetupTab(name){
+ for(const id of setupTabs){
+  const tab=byId(id);
+  tab.setAttribute('aria-selected',id===name);
+  tab.tabIndex=id===name?0:-1;
+ }
+ byId('panel').hidden=!scripts.includes(name);
+ byId('kanji-panel').hidden=name!=='Kanji';
+ byId('settings-panel').hidden=name!=='Settings';
+}
+setupTabs.forEach((name,index)=>{
+ const tab=byId(name);
+ tab.onclick=()=>{
+  if(!scripts.includes(name)){
+   selectSetupTab(name);
+   return;
+  }
+  script=name;
+  render();
+  save();
+ };
+ tab.onkeydown=event=>{
+  const last=setupTabs.length-1;
+  const destinations={ArrowLeft:(index+last)%setupTabs.length,ArrowRight:(index+1)%setupTabs.length,Home:0,End:last};
+  if(!Object.hasOwn(destinations,event.key))return;
+  event.preventDefault();
+  const nextTab=byId(setupTabs[destinations[event.key]]);
+  nextTab.click();
+  nextTab.focus();
+ };
+});
+
 const answer=byId('answer'),feedback=byId('feedback');
 let deck=[],bag=[],queue=[],current,correct,total,missed,revealed;
 function message(text,error=false){feedback.textContent=text;feedback.className=error?'error':''}
@@ -292,10 +514,12 @@ function next(){
  let i=Math.floor(Math.random()*bag.length);if(bag.length>1&&bag[i]===current)i=(i+1)%bag.length;
  const due=queue.findIndex(q=>q.after<=total&&q.card!==current);
  current=due>=0?queue.splice(due,1)[0].card:bag.splice(i,1)[0];
- byId('glyph').textContent=glyph(current[0]);answer.value='';answer.disabled=false;answer.setAttribute('aria-invalid','false');missed=revealed=false;byId('reveal').textContent='Show answer';answer.focus();
+ byId('glyph').classList.toggle('word-prompt',Boolean(current[3]));
+ byId('glyph').textContent=displayCard(current);answer.value='';answer.disabled=false;answer.setAttribute('aria-invalid','false');missed=revealed=false;byId('reveal').textContent='Show answer';answer.focus();
 }
 function score(){total++;if(!missed)correct++;else{queue=queue.filter(q=>q.card!==current);queue.push({card:current,after:total+2})}byId('stats').textContent=correct+' / '+total+' first try'}
-function readings([base,r]){
+function readings([base,r,,word]){
+ if(word)return [r];
  const forms=[r,...(aliases[base]||[])];if(base.length===2)forms.push(r.replace(/^sh/,'sy').replace(/^ch/,'ty').replace(/^j/,'zy'),r.replace(/^ch/,'cy').replace(/^j/,'jy'));return forms;
 }
 const answerForm=byId('answer-form');
@@ -304,7 +528,7 @@ answerForm.onsubmit=event=>{
  const value=answer.value.trim().toLowerCase();
  if(revealed||!value)return;
  if(readings(current).includes(value)){
-  message('Correct · '+glyph(current[0])+' = '+current[1]);score();next();return;
+  message('Correct · '+displayCard(current)+' = '+current[1]);score();next();return;
  }
  missed=true;answer.setAttribute('aria-invalid','true');
  message('Try again or show the answer.',true);answer.focus();answer.select();
@@ -315,14 +539,80 @@ answer.onkeydown=event=>{
 answer.oninput=()=>{
  if(answer.getAttribute('aria-invalid')==='true'){answer.setAttribute('aria-invalid','false');message('')}
 };
-byId('reveal').onclick=()=>{if(revealed){message('');next();return}missed=true;score();revealed=true;message(glyph(current[0])+' = '+current[1]);answer.disabled=true;byId('reveal').textContent='Next kana';byId('reveal').focus()};
+byId('reveal').onclick=()=>{if(revealed){message('');next();return}missed=true;score();revealed=true;message(displayCard(current)+' = '+current[1]);answer.disabled=true;byId('reveal').textContent='Next kana';byId('reveal').focus()};
+function referenceGroup(label){
+ const section=document.createElement('details'), heading=document.createElement('summary');
+ heading.textContent=label;
+ section.append(heading);
+ return section;
+}
+function renderReference(){
+ const chart=byId('chart'), reference=byId('reference');
+ chart.hidden=!referenceEnabled.checked;
+ chart.open=false;
+ reference.replaceChildren();
+ if(chart.hidden)return;
+ for(const name of [script,...scripts.filter(name=>name!==script)]){
+  const scriptGroup=referenceGroup(name);
+  categories.forEach(([title],index)=>{
+   const cards=categoryIndices(index).filter(i=>selected[name].has(i)).flatMap(i=>groups[i].cards);
+   if(!cards.length)return;
+   const categoryGroup=referenceGroup(title+' ('+cards.length+')');
+   const entries=document.createElement('div');
+   entries.className='reference-entries';
+   for(const [kana,reading] of cards){
+    const entry=document.createElement('span'), character=document.createElement('span');
+    entry.className='entry';
+    character.lang='ja';
+    character.textContent=name==='Hiragana'?kana:katakana(kana);
+    entry.append(character,' '+reading);
+    entries.append(entry);
+   }
+   categoryGroup.append(entries);
+   scriptGroup.append(categoryGroup);
+  });
+  wordLevels[name].forEach(([title],index)=>{
+   const cards=deck.filter(card=>card[2]===name&&card[3]===index+1);
+   if(!cards.length)return;
+   const group=referenceGroup('Words · Level '+(index+1)+' · '+title);
+   for(const card of cards){
+    const entry=document.createElement('span');
+    entry.className='entry';
+    entry.textContent=displayCard(card)+' '+card[1];
+    group.append(entry);
+   }
+   scriptGroup.append(group);
+  });
+  if(scriptGroup.childElementCount>1)reference.append(scriptGroup);
+ }
+}
 byId('start').onclick=()=>{
- deck=groups.flatMap((g,i)=>selected[script].has(i)?g.cards:[]);if(!deck.length)return;
+ deck=scripts.flatMap(name=>[
+  ...groups.flatMap((group,i)=>selected[name].has(i)?group.cards.map(([kana,reading])=>[kana,reading,name]):[]),
+  ...wordLevels[name].flatMap((_,level)=>wordsInLevel(name,level).flatMap(([word,reading],i)=>
+   selectedWords[name].has(wordKey(level,i))?[[word,reading,name,level+1]]:[]
+  ))
+ ]);
+ if(!deck.length)return;
  bag=[];queue=[];current=null;correct=total=0;byId('stats').textContent='0 / 0 first try';message('');
- byId('scriptName').textContent=script;byId('reference').replaceChildren();for(const [g,r] of deck){const entry=document.createElement('span');entry.className='entry';entry.textContent=glyph(g)+' '+r;byId('reference').append(entry)}
- document.body.classList.add('practicing');byId('chart').open=false;byId('setup').hidden=true;byId('drill').hidden=false;window.scrollTo(0,0);next();
+ byId('deck-size').textContent=deck.length+(deck.length===1?' card':' cards');
+ byId('chart').querySelector('summary').textContent=deck.some(card=>card[3])?'Reading reference':'Kana reference';
+ renderReference();
+ document.body.classList.add('practicing');byId('setup').hidden=true;byId('drill').hidden=false;window.scrollTo(0,0);next();
 };
-byId('back').onclick=()=>{document.body.classList.remove('practicing');byId('drill').hidden=true;byId('setup').hidden=false;byId(script).focus()};render();
+function showSetup(){
+ document.body.classList.remove('practicing');
+ byId('drill').hidden=true;
+ byId('setup').hidden=false;
+ selectSetupTab(script);
+ byId(script).focus();
+}
+byId('back').onclick=showSetup;
+byId('home').onclick=()=>{
+ showSetup();
+ window.scrollTo(0,0);
+};
+render();
 
 if(location.hash==='#previews'){
  document.documentElement.classList.add('previewing');
